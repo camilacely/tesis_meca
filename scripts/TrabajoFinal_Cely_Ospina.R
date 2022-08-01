@@ -63,11 +63,11 @@ setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 
 # # input Stata file
  library(haven)
- BASE_TESIS_2907 <- read_dta("DATOS/BASE TESIS 2907.dta")
- View(BASE_TESIS_2907)
+ BASE_TESIS_3107 <- read_dta("DATOS/BASE TESIS 3107.dta")
+ View(BASE_TESIS_3107)
 # 
 # 
-# export(BASE_TESIS_2907,"C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/BASE_TESIS.rds")
+#export(BASE_TESIS_3107,"C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/stores/BASE_TESIS.rds")
 
 
 
@@ -77,6 +77,7 @@ setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 db <-readRDS("stores/BASE_TESIS.Rds") 
 
 summary (db)
+#no tenemos NA
 
 # ----------- pendiente realizar estadisticas descriptivas
 
@@ -95,7 +96,7 @@ require("hdm")
 
 
 # y (subsidios) : SUB10MIL #57
-# y (vis) : VIS10MIL       #56
+# y (vis) : VIS10MIL       #56 Creo que dejar solo esta y centrarnos solo en el efecto sobre VIS, así todo es solo con las 52 obs
 
 # d (tratamiento) : proporcionareaexpansion #33
 
@@ -110,7 +111,7 @@ require("hdm")
 lapply(db, class)
 
 # $COD
-# [1] "character" ##PERO ESTA VARIABLE NO ES NECESARIA, NO HAY QUE CORRERLA EN OLS, PORQUE ES COMO EL ID DEL MUNICIPIO #1
+# [1] "character" ##PERO ESTA VARIABLE NO ES NECESARIA, NO HAY QUE CORRERLA EN OLS, PORQUE ES COMO EL ID DEL MUNICIPIO #1 #respuesta: no es necesaria, ya la toma codmpio es el mismo ID
 # 
 # $Codigodane     "ESTA TAMPOCO HAY QUE CORRERLA, ES OTRO ID # 2
 # [1] "numeric"
@@ -134,11 +135,12 @@ db <- db %>% mutate (Aglomeración= as.factor (db$Aglomeración))
 class (db$Aglomeración) 
 
 # 
-# $Ejesregionales
+# $Ejesregionales >> Esta creo que es mejor quitarla porque no tiene valores para todas las observaciones, no todos los municipios hacen parte de un eje
+# las aglomeraciones igual capturan todo este efecto
 # [1] "character"
 
-db <- db %>% mutate (Ejesregionales= as.factor (db$Ejesregionales))
-class (db$Ejesregionales)
+#db <- db %>% mutate (Ejesregionales= as.factor (db$Ejesregionales))
+#class (db$Ejesregionales)
 
 # 
 # $diskm
@@ -154,64 +156,12 @@ db <- db %>% mutate (AÑO_orig= as.factor (db$AÑO_orig))
 class (db$AÑO_orig)
 
 # 
-# $AÑO_gen
-# [1] "numeric"
-
-db <- db %>% mutate (AÑO_gen= as.factor (db$AÑO_gen))
-class (db$AÑO_gen)
-
-# 
-# $AÑO_mod
-# [1] "numeric"
-
-db <- db %>% mutate (AÑO_mod= as.factor (db$AÑO_mod))
-class (db$AÑO_mod)
-
-# 
-# $AÑO_MVCT
-# [1] "numeric"
-
-db <- db %>% mutate (AÑO_MVCT= as.factor (db$AÑO_MVCT))
-class (db$AÑO_MVCT)
-
-# 
 # $ULT_POT
 # [1] "numeric"
 
 db <- db %>% mutate (ULT_POT= as.factor (db$ULT_POT))
 class (db$ULT_POT)
 
-# 
-# $HASTA2SMMLV
-# [1] "numeric"
-# 
-# $SUPERIORESA2SMMLVYHASTA3S
-# [1] "numeric"
-# 
-# $SUPERIORESA2SMMLVYHASTA4S
-# [1] "numeric"
-# 
-# $SUPERIORESA3SMMLVYHASTA4S
-# [1] "numeric"
-# 
-# $subtotal
-# [1] "numeric"
-# 
-# $subvis
-# [1] "numeric"
-# 
-# $Hogares2020
-# [1] "numeric"
-# 
-# $Defhab2020
-# [1] "numeric"
-# 
-# $Defcuant2020
-# [1] "numeric"
-# 
-# $Defcuali2020
-# [1] "numeric"
-# 
 # $Hogares2005
 # [1] "numeric"
 # 
@@ -242,33 +192,10 @@ class (db$ULT_POT)
 # $proporcionareaexpansion
 # [1] "numeric"
 # 
-# $AREAURBANA
-# [1] "numeric"
-# 
 # $AVALÚOURBANO
 # [1] "numeric"
 # 
 # $Valorsuelo
-# [1] "numeric"
-# 
-# $municipio
-# [1] "character" #esta variable esta repetida, la voy a eliminar 
-
-drop <- c("municipio")
-db <- db[,!(names(db) %in% drop)]
-
-# 
-# $ano
-# [1] "numeric"
-
-db <- db %>% mutate (ano= as.factor (db$ano))
-class (db$ano)
-
-# 
-# $retro_pobl_urb
-# [1] "numeric"
-# 
-# $retro_pobl_tot
 # [1] "numeric"
 # 
 # $pobl_urb
@@ -301,18 +228,11 @@ class (db$ano)
 # $nbicabecera
 # [1] "numeric"
 # 
-# $otras
-# [1] "numeric"
-# 
-# $IPM
-# [1] "numeric"
-# 
 # $IPM_urb
 # [1] "numeric"
 # 
 # $Aglo
 # [1] "haven_labelled" "vctrs_vctr"     "double"        
-
 
 db <- db %>% mutate (Aglo= as.factor (db$Aglo))
 class (db$Aglo)
@@ -324,8 +244,43 @@ class (db$Aglo)
 # $VIS10MIL
 # [1] "numeric"
 # 
-# $SUB10MIL
+# $dismdo
 # [1] "numeric"
+#
+# $y_total
+# [1] "numeric"
+#
+# $g_total
+# [1] "numeric"
+#
+# $finan
+# [1] "numeric"
+#
+# $DF_desemp_fisc
+# [1] "numeric"
+#
+# $DI_desemp_int
+# [1] "numeric"
+#
+# $indesarrollo_mun
+# [1] "numeric"
+#
+# $indesarrollo_dep
+# [1] "numeric"
+#
+# $inv_en_vivienda
+# [1] "numeric"
+#
+# $inv_total
+# [1] "numeric"
+#
+#$categoria
+#[1] "character"
+
+db <- db %>% mutate (categoria= as.factor (db$categoria))
+class (db$categoria)
+###
+###
 
 
 ##Por ultimo hay que verificar que ninguna variable explicativa tenga valores unique (es decir que sea igualita en todas las observaciones)
@@ -333,11 +288,6 @@ class (db$Aglo)
 sapply(lapply(db, unique), length)
 
 which(sapply(db, function(x) length(unique(x))<2))
-
-#vemos que ano es la variable problematica entonces la eliminamos
-
-drop <- c("ano")
-db <- db[,!(names(db) %in% drop)]
 
 
 ### Estimation in a linear model with many confounding factors
