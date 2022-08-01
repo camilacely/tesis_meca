@@ -406,12 +406,14 @@ varnames <- colnames(dbs)
 xnames <- varnames [-c(21,10)]
 
 #dandxnames <- varnames [-c(27,26,15)]
-dandxnames <- varnames [-c(21,10)]
+dandxnames <- varnames [-c(21)]
 
 #fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
 fmla_sub <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames, collapse= "+")))
 
-ls_effect_sub <- lm (fmla_sub, data= dbs) #AQUI SI CORRE, pero hay que solucionarle los NAs
+
+
+ls_effect_sub <- lm (fmla_sub, data = dbs) #AQUI SI CORRE, pero hay que solucionarle los NAs
 
 summary(ls_effect_sub)
 
@@ -426,6 +428,9 @@ lasso.effect <- rlassoEffect(x=xs, y=y_sub10, d=d_ex, method= "double selection"
 
 
 
+
+Eff = rlassoEffect(X[, -1], y, X[, 1], method = "partialling out")
+summary(Eff)$coef[, 1:2]
 
 
 
