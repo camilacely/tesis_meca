@@ -333,37 +333,28 @@ which(sapply(db, function(x) length(unique(x))<2))
 
 colnames(db)
 
-# [1] "COD"                       "Codigodane"                "DEPARTAMENTO"              "MUNICIPIO"                
-# [5] "Aglomeración"              "Ejesregionales"            "diskm"                     "disminutos"               
-# [9] "AÑO_orig"                  "AÑO_gen"                   "AÑO_mod"                   "AÑO_MVCT"                 
-# [13] "ULT_POT"                   "HASTA2SMMLV"               "SUPERIORESA2SMMLVYHASTA3S" "SUPERIORESA2SMMLVYHASTA4S"
-# [17] "SUPERIORESA3SMMLVYHASTA4S" "subtotal"                  "subvis"                    "Hogares2020"              
-# [21] "Defhab2020"                "Defcuant2020"              "Defcuali2020"              "Hogares2005"              
-# [25] "Defhab2005"                "Defcuant2005"              "Defcuali2005"              "VIS"                      
-# [29] "Indsub"                    "IndVIS"                    "Totalsueloexpansion"       "areainicialurbana"        
-# [33] "proporcionareaexpansion"   "AREAURBANA"                "AVALÚOURBANO"              "Valorsuelo"               
-# [37] "retro_pobl_urb"            "retro_pobl_tot"            "pobl_urb"                  "pobl_tot"                 
-# [41] "indrural"                  "altura"                    "pib_percapita"             "gpc"                      
-# [45] "gini"                      "pobreza"                   "nbi"                       "nbicabecera"              
-# [49] "otras"                     "IPM"                       "IPM_urb"                   "Aglo"                     
-# [53] "POB10mil"                  "VIS10MIL"                  "SUB10MIL"                 
+#[1] "codmpio"                 "DEPARTAMENTO"            "MUNICIPIO"               "Aglomeración"            "diskm"                  
+#[6] "disminutos"              "AÑO_orig"                "ULT_POT"                 "Hogares2005"             "Defhab2005"             
+#[11] "Defcuant2005"            "Defcuali2005"            "VIS"                     "IndVIS"                  "Totalsueloexpansion"    
+#[16] "areainicialurbana"       "proporcionareaexpansion" "AVALÚOURBANO"            "Valorsuelo"              "pobl_urb"               
+#[21] "pobl_tot"                "indrural"                "altura"                  "pib_percapita"           "gpc"                    
+#[26] "gini"                    "pobreza"                 "nbicabecera"             "IPM_urb"                 "Aglo"                   
+#[31] "POB10mil"                "VIS10MIL"                "dismdo"                  "y_total"                 "g_total"                
+#[36] "finan"                   "DF_desemp_fisc"          "DI_desemp_int"           "indesarrollo_mun"        "indesarrollo_dep"       
+#[41] "inv_en_vivienda"         "inv_total"               "categoria"  
 
+#Aglomeración
 #diskm
 #disminutos
+#AÑO_orig
 #ULT_POT
-#subtotal
-#subvis
-#Defhab2020
-#Defcuant2020
-#Defcuali2020
 #Defhab2005
 #Defcuant2005
 #Defcuali2005
-#VIS
-#Indsub
 #IndVIS
 #proporcionareaexpansion
 #Valorsuelo
+#pobl_urb
 #indrural
 #altura
 #pib_percapita
@@ -372,21 +363,38 @@ colnames(db)
 #pobreza
 #nbicabecera
 #IPM_urb
-#Aglo
 #VIS10MIL
-#SUB10MIL
+#dismdo
+#y_total
+#g_total
+#finan
+#DF_desemp_fisc
+#DI_desemp_int
+#indesarrollo_mun
+#indesarrollo_dep
+#inv_en_vivienda
+#inv_total
+#categoria
 
-dbs <- select(filter(db),c( diskm,  disminutos, ULT_POT, subtotal, subvis,  Defhab2020, Defcuant2020, Defcuali2020,  Defhab2005, 
-                            Defcuant2005,Defcuali2005,  VIS, Indsub, IndVIS, proporcionareaexpansion,  Valorsuelo,  indrural, 
-                            altura, pib_percapita, gpc, gini, pobreza, nbicabecera, IPM_urb, Aglo, VIS10MIL, SUB10MIL ))  #Sari meti muchas variables aca pero revisa si falta o sobra alguna 
 
 
-y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
-y_vis10 <- dbs [,26, drop=F] #variable y de vis por cada 10mil habitantes
+#dbs <- select(filter(db),c( diskm,  disminutos, ULT_POT, subtotal, subvis,  Defhab2020, Defcuant2020, Defcuali2020,  Defhab2005, 
+#                            Defcuant2005,Defcuali2005,  VIS, Indsub, IndVIS, proporcionareaexpansion,  Valorsuelo,  indrural, 
+#                            altura, pib_percapita, gpc, gini, pobreza, nbicabecera, IPM_urb, Aglo, VIS10MIL, SUB10MIL ))  #Sari meti muchas variables aca pero revisa si falta o sobra alguna 
 
-d_ex <- dbs [,15, drop=F] #variable "tratamiento" (aumento suelo expansion)
+dbs <- select(filter(db),c( Aglomeración , diskm , disminutos , AÑO_orig , ULT_POT , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
+                            proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
+                            nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
+                            indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total , categoria ))
 
-xs <- as.matrix(dbs)[,-c(27,26,15)] #matriz del resto de variables 
+
+#y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
+y_vis10 <- dbs [,21, drop=F] #variable y de vis por cada 10mil habitantes
+
+d_ex <- dbs [,10, drop=F] #variable "tratamiento" (aumento suelo expansion)
+
+#xs <- as.matrix(dbs)[,-c(27,26,15)] #matriz del resto de variables 
+xs <- as.matrix(dbs)[,-c(21,10)] #matriz del resto de variables 
 
 varnames <- colnames(dbs)
 
@@ -394,11 +402,14 @@ varnames <- colnames(dbs)
 #####################
 # First:  Estimate by OLS
 
-xnames <- varnames [-c(27,26,15)]
+#xnames <- varnames [-c(27,26,15)]
+xnames <- varnames [-c(21,10)]
 
-dandxnames <- varnames [-c(27,26)]
+#dandxnames <- varnames [-c(27,26,15)]
+dandxnames <- varnames [-c(21,10)]
 
-fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
+#fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
+fmla_sub <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames, collapse= "+")))
 
 ls_effect_sub <- lm (fmla_sub, data= dbs) #AQUI SI CORRE, pero hay que solucionarle los NAs
 
