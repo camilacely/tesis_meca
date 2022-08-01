@@ -428,7 +428,7 @@ colnames(db)
 
 dbs <- select(filter(db),c( diskm,  disminutos, ULT_POT, subtotal, subvis,  Defhab2020, Defcuant2020, Defcuali2020,  Defhab2005, 
                             Defcuant2005,Defcuali2005,  VIS, Indsub, IndVIS, proporcionareaexpansion,  Valorsuelo,  indrural, 
-                            altura, pib_percapita, gpc, gini, pobreza, nbicabecera, IPM_urb, Aglo, VIS10MIL, SUB10MIL )) 
+                            altura, pib_percapita, gpc, gini, pobreza, nbicabecera, IPM_urb, Aglo, VIS10MIL, SUB10MIL ))  #Sari meti muchas variables aca pero revisa si falta o sobra alguna 
 
 
 y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
@@ -459,7 +459,9 @@ summary(ls_effect_sub)
 #####################
 # Second:  Estimate the effect by the partialling out by Post-Lasso
 
-lasso.effect <- rlassoEffect(x=xs, y=y_sub10, d=d_ex, method= "partialling out")
+
+
+lasso.effect <- rlassoEffect(x=xs, y=y_sub10, d=d_ex, method= "double selection") #pendiente segun respuesta de ignacio
 
 
 
