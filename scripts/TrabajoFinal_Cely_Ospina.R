@@ -420,9 +420,7 @@ db <- db %>%
   mutate(Cat_6 = if_else(db$categoria==6, 1, 0))
 
 db <- db %>% 
-  mutate(Cat_7 = if_else(db$categoria==7, 1, 0))
-
-
+  mutate(Cat_ESP = if_else(db$categoria=="ESP", 1, 0))
 
 
 
