@@ -466,3 +466,25 @@ summary(Eff)$coef[, 1:2]
 
 
 
+##PENDIENTES
+
+# 1 - terminar codigo (hoy) - Sara
+
+# 2 - Sara - variable pablo querubin (2011)
+# 2 - Camila - variable dummy pot           (mañana primera hora)
+
+# 3 - correr (asumamos que sale bien todo) - Sara
+# 3 - montar rapidamente borrador de paper - Camila
+
+# 4 - hacer estadisticas descriptivas y nutrir el paper - Sara
+# 4 - esto puede incluir mapas                          - Camila
+
+# 5 - Consolidar y enviar
+
+
+# Otros pendientes
+
+# - preguntarle a Ignacio lo de aglomeracion
+
+
+
