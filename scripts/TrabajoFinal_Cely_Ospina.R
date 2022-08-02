@@ -401,7 +401,26 @@ db <- db %>%
 #########
 #VARIABLE: Dummies por Categoria
 
+db <- db %>% 
+  mutate(Cat_1 = if_else(db$categoria==1, 1, 0))
 
+db <- db %>% 
+  mutate(Cat_2 = if_else(db$categoria==2, 1, 0))
+
+db <- db %>% 
+  mutate(Cat_3 = if_else(db$categoria==3, 1, 0))
+
+db <- db %>% 
+  mutate(Cat_4 = if_else(db$categoria==4, 1, 0))
+
+db <- db %>% 
+  mutate(Cat_5 = if_else(db$categoria==5, 1, 0))
+
+db <- db %>% 
+  mutate(Cat_6 = if_else(db$categoria==6, 1, 0))
+
+db <- db %>% 
+  mutate(Cat_7 = if_else(db$categoria==7, 1, 0))
 
 
 
