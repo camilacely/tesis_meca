@@ -234,7 +234,7 @@ class (db$ULT_POT)
 # $Aglo
 # [1] "haven_labelled" "vctrs_vctr"     "double"        
 
-db <- db %>% mutate (Aglo= as.factor (db$Aglo))
+db <- db %>% mutate (Aglo= as.numeric (db$Aglo))
 class (db$Aglo)
 
 # 
@@ -387,6 +387,13 @@ dbs <- select(filter(db),c( Aglomeración , diskm , disminutos , AÑO_orig , ULT
                             nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
                             indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total , categoria ))
 
+dbs_2 <- select(filter(db),c(diskm , disminutos , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
+                            proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
+                            nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
+                            indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total ))
+cor(dbs_2)
+
+cor(db)
 
 #y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
 y_vis10 <- dbs [,21, drop=F] #variable y de vis por cada 10mil habitantes
@@ -398,6 +405,18 @@ xs <- as.matrix(dbs)[,-c(21,10)] #matriz del resto de variables
 
 varnames <- colnames(dbs)
 
+############################
+############################
+
+#y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
+y_vis10_2 <- dbs_2 [,18, drop=F] #variable y de vis por cada 10mil habitantes
+
+d_ex_2 <- dbs_2 [,7, drop=F] #variable "tratamiento" (aumento suelo expansion)
+
+#xs <- as.matrix(dbs)[,-c(27,26,15)] #matriz del resto de variables 
+xs_2 <- as.matrix(dbs_2)[,-c(18,7)] #matriz del resto de variables 
+
+varnames_2 <- colnames(dbs_2)
 
 #####################
 # First:  Estimate by OLS
@@ -417,16 +436,29 @@ ls_effect_sub <- lm (fmla_sub, data = dbs) #AQUI SI CORRE, pero hay que solucion
 
 summary(ls_effect_sub)
 
+##################################################
+##################################################
+##################################################
+##################################################
 
+#xnames <- varnames [-c(27,26,15)]
+xnames_2 <- varnames_2 [-c(18,7)]
 
+#dandxnames <- varnames [-c(27,26,15)]
+dandxnames_2 <- varnames_2 [-c(18)]
+
+#fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
+fmla_sub_2 <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_2, collapse= "+")))
+
+ls_effect_sub_2 <- lm (fmla_sub_2, data = dbs_2) #AQUI SI CORRE, pero hay que solucionarle los NAs
+
+summary(ls_effect_sub_2)
 #####################
 # Second:  Estimate the effect by the partialling out by Post-Lasso
 
 
 
-lasso.effect <- rlassoEffect(x=xs, y=y_sub10, d=d_ex, method= "double selection") #pendiente segun respuesta de ignacio
-
-
+lasso.effect <- rlassoEffect(x=xs_2, y=y_vis10_2, d=d_ex_2, method= "double selection") #pendiente segun respuesta de ignacio
 
 
 Eff = rlassoEffect(X[, -1], y, X[, 1], method = "partialling out")
