@@ -38,7 +38,7 @@ p_load(tidyverse,    #Para limpiar los datos
 ## Directorio
 
 #setwd("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS")
-setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
+#setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 
 
 ###############################
@@ -48,8 +48,8 @@ setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 #la base la veniamos trabajando en stata, por lo tanto la vamos a importar
 
 # # input Stata file
-# library(haven)
-# BASE_TESIS_3107 <- read_dta("DATOS/BASE TESIS 3107.dta")
+#library(haven)
+#BASE_TESIS_3107 <- read_dta("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS/BASE TESIS 3107.dta")
 # View(BASE_TESIS_3107)
 # 
 # 
@@ -269,6 +269,102 @@ class (db$Aglo)
 
 db <- db %>% mutate (categoria= as.factor (db$categoria))
 class (db$categoria)
+
+#Volver variable de aglomeracion dummies
+
+db <- db %>% 
+  mutate(A_Apartado = if_else(db$Aglo==1, 1, 0))
+
+db <- db %>% 
+  mutate(A_Armenia = if_else(db$Aglo==2, 1, 0))
+
+db <- db %>% 
+  mutate(A_Barrancabermenja = if_else(db$Aglo==3, 1, 0))
+
+db <- db %>% 
+  mutate(A_Barranquilla = if_else(db$Aglo==4, 1, 0))
+
+db <- db %>% 
+  mutate(A_Bogota = if_else(db$Aglo==5, 1, 0))
+
+db <- db %>% 
+  mutate(A_Bucaramanga = if_else(db$Aglo==6, 1, 0))
+
+db <- db %>% 
+  mutate(A_Buenaventura = if_else(db$Aglo==7, 1, 0))
+
+db <- db %>% 
+  mutate(A_Cali = if_else(db$Aglo==8, 1, 0))
+
+db <- db %>% 
+  mutate(A_Cartagena = if_else(db$Aglo==9, 1, 0))
+
+db <- db %>% 
+  mutate(A_Cartago = if_else(db$Aglo==10, 1, 0))
+
+db <- db %>% 
+  mutate(A_Cucuta = if_else(db$Aglo==12, 1, 0))
+
+db <- db %>% 
+  mutate(A_Duitama = if_else(db$Aglo==13, 1, 0))
+
+db <- db %>% 
+  mutate(A_Fusagasuga = if_else(db$Aglo==15, 1, 0))
+
+db <- db %>% 
+  mutate(A_Girardot = if_else(db$Aglo==16, 1, 0))
+
+db <- db %>% 
+  mutate(A_Buga = if_else(db$Aglo==17, 1, 0))
+
+db <- db %>% 
+  mutate(A_Ibague = if_else(db$Aglo==18, 1, 0))
+
+db <- db %>% 
+  mutate(A_Manizales = if_else(db$Aglo==20, 1, 0))
+
+db <- db %>% 
+  mutate(A_Medellin = if_else(db$Aglo==21, 1, 0))
+
+db <- db %>% 
+  mutate(A_Monteria = if_else(db$Aglo==22, 1, 0))
+
+db <- db %>% 
+  mutate(A_Neiva = if_else(db$Aglo==23, 1, 0))
+
+db <- db %>% 
+  mutate(A_Pasto = if_else(db$Aglo==25, 1, 0))
+
+db <- db %>% 
+  mutate(A_Pereira = if_else(db$Aglo==26, 1, 0))
+
+db <- db %>% 
+  mutate(A_Popayan = if_else(db$Aglo==27, 1, 0))
+
+db <- db %>% 
+  mutate(A_Rionegro = if_else(db$Aglo==29, 1, 0))
+
+db <- db %>% 
+  mutate(A_SantaMarta = if_else(db$Aglo==31, 1, 0))
+
+db <- db %>% 
+  mutate(A_Sincelejo = if_else(db$Aglo==32, 1, 0))
+
+db <- db %>% 
+  mutate(A_Sogamoso = if_else(db$Aglo==33, 1, 0))
+
+db <- db %>% 
+  mutate(A_Tulua = if_else(db$Aglo==34, 1, 0))
+
+db <- db %>% 
+  mutate(A_Tunja = if_else(db$Aglo==35, 1, 0))
+
+db <- db %>% 
+  mutate(A_Valledupar = if_else(db$Aglo==37, 1, 0))
+
+db <- db %>% 
+  mutate(A_Villavicencio = if_else(db$Aglo==38, 1, 0))
+
 ###
 ###
 
