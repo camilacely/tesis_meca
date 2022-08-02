@@ -31,7 +31,8 @@ p_load(tidyverse,    #Para limpiar los datos
        stargazer,
        leaflet,
        haven,
-       hdm)
+       hdm,
+       xtable)
 
 ##############################
 ##############################
@@ -444,20 +445,27 @@ db <- db %>%
 #Verifico los nombres de todas las variables disponibles
 colnames(db)
 
-#(actualizar)
-#[1] "codmpio"                 "DEPARTAMENTO"            "MUNICIPIO"               "Aglomeración"            "diskm"                  
-#[6] "disminutos"              "AÑO_orig"                "ULT_POT"                 "Hogares2005"             "Defhab2005"             
-#[11] "Defcuant2005"            "Defcuali2005"            "VIS"                     "IndVIS"                  "Totalsueloexpansion"    
-#[16] "areainicialurbana"       "proporcionareaexpansion" "AVALÚOURBANO"            "Valorsuelo"              "pobl_urb"               
-#[21] "pobl_tot"                "indrural"                "altura"                  "pib_percapita"           "gpc"                    
-#[26] "gini"                    "pobreza"                 "nbicabecera"             "IPM_urb"                 "Aglo"                   
-#[31] "POB10mil"                "VIS10MIL"                "dismdo"                  "y_total"                 "g_total"                
-#[36] "finan"                   "DF_desemp_fisc"          "DI_desemp_int"           "indesarrollo_mun"        "indesarrollo_dep"       
-#[41] "inv_en_vivienda"         "inv_total"               "categoria"  
+# [1] "codmpio"                 "DEPARTAMENTO"            "MUNICIPIO"               "Aglomeración"            "diskm"                  
+# [6] "disminutos"              "AÑO_orig"                "ULT_POT"                 "Hogares2005"             "Defhab2005"             
+# [11] "Defcuant2005"            "Defcuali2005"            "VIS"                     "IndVIS"                  "Totalsueloexpansion"    
+# [16] "areainicialurbana"       "proporcionareaexpansion" "AVALÚOURBANO"            "Valorsuelo"              "pobl_urb"               
+# [21] "pobl_tot"                "indrural"                "altura"                  "pib_percapita"           "gpc"                    
+# [26] "gini"                    "pobreza"                 "nbicabecera"             "IPM_urb"                 "Aglo"                   
+# [31] "POB10mil"                "VIS10MIL"                "dismdo"                  "y_total"                 "g_total"                
+# [36] "finan"                   "DF_desemp_fisc"          "DI_desemp_int"           "indesarrollo_mun"        "indesarrollo_dep"       
+# [41] "inv_en_vivienda"         "inv_total"               "categoria"               "pot_exc"                 "A_Apartado"             
+# [46] "A_Armenia"               "A_Barrancabermenja"      "A_Barranquilla"          "A_Bogota"                "A_Bucaramanga"          
+# [51] "A_Buenaventura"          "A_Cali"                  "A_Cartagena"             "A_Cartago"               "A_Cucuta"               
+# [56] "A_Duitama"               "A_Fusagasuga"            "A_Girardot"              "A_Buga"                  "A_Ibague"               
+# [61] "A_Manizales"             "A_Medellin"              "A_Monteria"              "A_Neiva"                 "A_Pasto"                
+# [66] "A_Pereira"               "A_Popayan"               "A_Rionegro"              "A_SantaMarta"            "A_Sincelejo"            
+# [71] "A_Sogamoso"              "A_Tulua"                 "A_Tunja"                 "A_Valledupar"            "A_Villavicencio"        
+# [76] "Cat_1"                   "Cat_2"                   "Cat_3"                   "Cat_4"                   "Cat_5"                  
+# [81] "Cat_6"                   "Cat_ESP"  
 
 
 
-###############Seleccionamos las mas relevantes para nuestro analisis
+###########Analizar cuales pueden ser intuitivamente las mas relevantes para nuestro analisis
 
 #Aglomeración
 #diskm
@@ -499,11 +507,206 @@ colnames(db)
 
 ############################################################################################################
 
-### A) VERSION ORIGINAL DE LO ANALIZADO PREVIAMENTE (POCAS VARIABLES)
+### A) VERSION ORIGINAL DE LO ANALIZADO PREVIAMENTE (POCAS VARIABLES) -- esta intuicion ya la habiamos trabajado previamente en stata 
 
 
 db_a <- select(filter(db),c(VIS10MIL, proporcionareaexpansion, IPM_urb, Defcuant2005, IndVIS, Valorsuelo ))
 cor(db_a)
+
+y_a <- db_a [,1, drop=F] #variable y de vis por cada 10mil habitantes
+d_a <- db_a [,2, drop=F] #variable "tratamiento" (aumento suelo expansion)
+x_a <- as.matrix(db_a)[,-c(1,2)] #matriz del resto de variables 
+
+varnames_a <- colnames(db_a)
+
+##
+# First:  Estimate by OLS
+xnames_a <- varnames_a [-c(1,2)]
+dandxnames_a <- varnames_a [-c(1)]
+
+fmla_a <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_a, collapse= "+")))
+
+ls_effect_a <- lm (fmla_a, data = db_a)
+
+summary(ls_effect_a) 
+
+##
+# Second:  Estimate the effect by the partialling out by Post-Lasso
+lasso_effect_a <- rlassoEffect(x=x_a, y=y_a, d=d_a, method= "partialling out") 
+summary(lasso_effect_a)
+
+
+##
+# Third:  Estimate the effect by the double selection method
+doublesel_effect_a <- rlassoEffect(x=x_a, y=y_a, d=d_a, method= "double selection") 
+summary(doublesel_effect_a)
+
+
+##
+# Collect results
+
+table_a = rbind(summary(ls_effect_a)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_a)$coef[, 1:2], 
+              summary(doublesel_effect_a)$coef[, 1:2]) 
+colnames(table_a) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table_a) = c("full reg via ols", "partial reg
+via post-lasso ", "partial reg via double selection")
+tab_a = xtable(table_a, digits = c(2, 2, 5))
+tab_a
+
+
+############################################################################################################
+
+### B) QUE PASA SI CORREMOS LO MISMO PERO SIN INDVIS
+
+db_b <- select(filter(db),c(VIS10MIL, proporcionareaexpansion, IPM_urb, Defcuant2005, Valorsuelo ))
+cor(db_b)
+
+y_b <- db_b [,1, drop=F] #variable y de vis por cada 10mil habitantes
+d_b <- db_b [,2, drop=F] #variable "tratamiento" (aumento suelo expansion)
+x_b <- as.matrix(db_b)[,-c(1,2)] #matriz del resto de variables 
+
+varnames_b <- colnames(db_b)
+
+##
+# First:  Estimate by OLS
+xnames_b <- varnames_b [-c(1,2)]
+dandxnames_b <- varnames_b [-c(1)]
+
+fmla_b <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_b, collapse= "+")))
+
+ls_effect_b <- lm (fmla_b, data = db_b)
+
+summary(ls_effect_b) 
+
+##
+# Second:  Estimate the effect by the partialling out by Post-Lasso
+lasso_effect_b <- rlassoEffect(x=x_b, y=y_b, d=d_b, method= "partialling out") 
+summary(lasso_effect_b)
+
+
+##
+# Third:  Estimate the effect by the double selection method
+doublesel_effect_b <- rlassoEffect(x=x_b, y=y_b, d=d_b, method= "double selection") 
+summary(doublesel_effect_b)
+
+
+##
+# Collect results
+
+table_b = rbind(summary(ls_effect_b)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_b)$coef[, 1:2], 
+                summary(doublesel_effect_b)$coef[, 1:2]) 
+colnames(table_b) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table_b) = c("full reg via ols", "partial reg
+via post-lasso ", "partial reg via double selection")
+tab_b = xtable(table_b, digits = c(2, 2, 5))
+tab_b
+
+
+
+############################################################################################################
+
+### C) IGUAL A VERSION A, PERO CONTROLANDO POR AGLOMERACION (EFECTO FIJO = DUMMY)
+
+db_c <- select(filter(db),c(VIS10MIL, proporcionareaexpansion, IPM_urb, Defcuant2005, IndVIS, Valorsuelo,
+                            A_Apartado, A_Armenia  , A_Barrancabermenja,  A_Barranquilla, A_Bogota, A_Bucaramanga,
+                            A_Buenaventura, A_Cali, A_Cartagena, A_Cartago,  A_Cucuta, A_Duitama, A_Fusagasuga, A_Girardot,
+                            A_Buga,  A_Ibague, A_Manizales, A_Medellin,  A_Monteria,  A_Neiva, A_Pasto, A_Pereira, A_Popayan,
+                            A_Rionegro, A_SantaMarta,  A_Sincelejo, A_Sogamoso, A_Tulua  , A_Tunja, A_Valledupar, A_Villavicencio  ))
+cor(db_c)
+
+
+y_c <- db_c [,1, drop=F] #variable y de vis por cada 10mil habitantes
+d_c <- db_c [,2, drop=F] #variable "tratamiento" (aumento suelo expansion)
+x_c <- as.matrix(db_c)[,-c(1,2)] #matriz del resto de variables 
+
+varnames_c <- colnames(db_c)
+
+##
+# First:  Estimate by OLS
+xnames_c <- varnames_c [-c(1,2)]
+dandxnames_c <- varnames_c [-c(1)]
+
+fmla_c <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_c, collapse= "+")))
+
+ls_effect_c <- lm (fmla_c, data = db_c)
+
+summary(ls_effect_c) 
+
+##
+# Second:  Estimate the effect by the partialling out by Post-Lasso
+lasso_effect_c <- rlassoEffect(x=x_c, y=y_c, d=d_c, method= "partialling out") 
+summary(lasso_effect_c)
+
+
+##
+# Third:  Estimate the effect by the double selection method
+doublesel_effect_c <- rlassoEffect(x=x_c, y=y_c, d=d_c, method= "double selection") 
+summary(doublesel_effect_c)
+
+
+##
+# Collect results
+
+table_c = rbind(summary(ls_effect_c)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_c)$coef[, 1:2], 
+                summary(doublesel_effect_c)$coef[, 1:2]) 
+colnames(table_c) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table_c) = c("full reg via ols", "partial reg
+via post-lasso ", "partial reg via double selection")
+tab_c = xtable(table_c, digits = c(2, 2, 5))
+tab_c
+
+
+############################################################################################################
+
+### D) IGUAL A VERSION A, PERO CONTROLANDO POR CATEGORIA (EFECTO FIJO = DUMMY)
+
+db_d <- select(filter(db),c(VIS10MIL, proporcionareaexpansion, IPM_urb, Defcuant2005, IndVIS, Valorsuelo,
+                            Cat_1, Cat_2, Cat_3,  Cat_4, Cat_5, Cat_6, Cat_ESP))
+cor(db_d)
+
+
+y_d <- db_d [,1, drop=F] #variable y de vis por cada 10mil habitantes
+d_d <- db_d [,2, drop=F] #variable "tratamiento" (aumento suelo expansion)
+x_d <- as.matrix(db_d)[,-c(1,2)] #matriz del resto de variables 
+
+varnames_d <- colnames(db_d)
+
+##
+# First:  Estimate by OLS
+xnames_d <- varnames_d [-c(1,2)]
+dandxnames_d <- varnames_d [-c(1)]
+
+fmla_d <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_d, collapse= "+")))
+
+ls_effect_d <- lm (fmla_d, data = db_d)
+
+summary(ls_effect_d) 
+
+##
+# Second:  Estimate the effect by the partialling out by Post-Lasso
+lasso_effect_c <- rlassoEffect(x=x_c, y=y_c, d=d_c, method= "partialling out") 
+summary(lasso_effect_c)
+
+
+##
+# Third:  Estimate the effect by the double selection method
+doublesel_effect_c <- rlassoEffect(x=x_c, y=y_c, d=d_c, method= "double selection") 
+summary(doublesel_effect_c)
+
+
+##
+# Collect results
+
+table_c = rbind(summary(ls_effect_c)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_c)$coef[, 1:2], 
+                summary(doublesel_effect_c)$coef[, 1:2]) 
+colnames(table_c) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table_c) = c("full reg via ols", "partial reg
+via post-lasso ", "partial reg via double selection")
+tab_c = xtable(table_c, digits = c(2, 2, 5))
+tab_c
+
+
+
 
 
 
@@ -525,99 +728,12 @@ cor(dbs_2) #matriz de correlaciones
 
 
 
-#################### 
-
-#y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
-
-#y_vis10 <- dbs [,21, drop=F] #variable y de vis por cada 10mil habitantes
-
-#d_ex <- dbs [,10, drop=F] #variable "tratamiento" (aumento suelo expansion)
-
-#xs <- as.matrix(dbs)[,-c(27,26,15)] #matriz del resto de variables 
-#xs <- as.matrix(dbs)[,-c(21,10)] #matriz del resto de variables 
-
-#varnames <- colnames(dbs)
 
 
 
 
 
 
-############################
-############################
-
-#y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
-y_vis10_2 <- dbs_2 [,18, drop=F] #variable y de vis por cada 10mil habitantes
-
-d_ex_2 <- dbs_2 [,7, drop=F] #variable "tratamiento" (aumento suelo expansion)
-
-#xs <- as.matrix(dbs)[,-c(27,26,15)] #matriz del resto de variables 
-xs_2 <- as.matrix(dbs_2)[,-c(18,7)] #matriz del resto de variables 
-
-varnames_2 <- colnames(dbs_2)
-
-#####################
-# First:  Estimate by OLS
-
-#xnames <- varnames [-c(27,26,15)]
-#xnames <- varnames [-c(21,10)]
-
-#dandxnames <- varnames [-c(27,26,15)]
-#dandxnames <- varnames [-c(21)]
-
-#fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
-#fmla_sub <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames, collapse= "+")))
-
-
-
-#ls_effect_sub <- lm (fmla_sub, data = dbs) #AQUI SI CORRE, pero hay que solucionarle los NAs
-
-#summary(ls_effect_sub)
-
-##################################################
-##################################################
-##################################################
-##################################################
-
-#xnames <- varnames [-c(27,26,15)]
-xnames_2 <- varnames_2 [-c(18,7)]
-
-#dandxnames <- varnames [-c(27,26,15)]
-dandxnames_2 <- varnames_2 [-c(18)]
-
-#fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
-fmla_sub_2 <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_2, collapse= "+")))
-
-ls_effect_sub_2 <- lm (fmla_sub_2, data = dbs_2) #AQUI SI CORRE
-
-summary(ls_effect_sub_2) #recordar que esto es por OLS
-
-#####################
-# Second:  Estimate the effect by the partialling out by Post-Lasso
-
-lasso.effect <- rlassoEffect(x=xs_2, y=y_vis10_2, d=d_ex_2, method= "partialling out") #pendiente segun respuesta de ignacio
-summary(lasso.effect)
-
-####################
-# Third:  Estimate the effect by the double selection method
-
-doublesel.effect <- rlassoEffect(x=xs_2, y=y_vis10_2, d=d_ex_2, method= "double selection") #pendiente segun respuesta de ignacio
-summary(doublesel.effect)
-
-
-####################
-# Collect results
-
-install.packages("xtable")
-library(xtable)
-table = rbind(summary(ls_effect_sub_2)$coef["proporcionareaexpansion", 1:2], summary(lasso.effect)$coef[, 1:2], 
-              summary(doublesel.effect)$coef[, 1:2]) 
-colnames(table) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
-rownames(table) = c("full reg via ols", "partial reg
-via post-lasso ", "partial reg via double selection")
-tab = xtable(table, digits = c(2, 2, 5))
-
-tab
 
 ##PENDIENTES
 
