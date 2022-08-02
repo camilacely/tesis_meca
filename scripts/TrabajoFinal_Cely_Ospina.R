@@ -65,34 +65,27 @@ summary (db)
 #no tenemos NA
 
 
-###############################
-###############################
-## Estadisticas Descriptivas
-
-# ----------- pendiente realizar estadisticas descriptivas
-
-
-
-
-
-
-
-
-
 #####################
-# 2. Estimation
+# 2. Limpieza y estadisticas descriptivas
 #####################
 
 
-###
+###############################
+###############################
 #IDENTIFICACION DE VARIABLES 
 
 # y (vis) : VIS10MIL      
 # d (tratamiento) : proporcionareaexpansion 
 
+
+
+###############################
+###############################
+# CLASS DE LAS VARIABLES
+
+
 ####
 #las variables tienen que ser numeric o factor
-
 #identificamos cuales no cumplen estas caracteristicas
 
 ###
@@ -101,9 +94,9 @@ summary (db)
 lapply(db, class)
 
 # $COD
-# [1] "character" ##PERO ESTA VARIABLE NO ES NECESARIA, NO HAY QUE CORRERLA EN OLS, PORQUE ES COMO EL ID DEL MUNICIPIO #1 #respuesta: no es necesaria, ya la toma codmpio es el mismo ID
+# [1] "character" ##PERO ESTA VARIABLE NO ES NECESARIA, NO HAY QUE CORRERLA EN OLS, codmpio es el mismo ID
 # 
-# $Codigodane     "ESTA TAMPOCO HAY QUE CORRERLA, ES OTRO ID # 2
+# $Codigodane     #ESTA TAMPOCO HAY QUE CORRERLA, ES OTRO ID # 2
 # [1] "numeric"
 # 
 # $DEPARTAMENTO
@@ -147,10 +140,7 @@ class (db$AÑO_orig)
 
 # 
 # $ULT_POT
-# [1] "numeric"
-
-db <- db %>% mutate (ULT_POT= as.factor (db$ULT_POT))
-class (db$ULT_POT)
+# [1] "numeric" #esta no la voy a volver factor porque la necesito para crear la dummy de incorporacion automatica
 
 # $Hogares2005
 # [1] "numeric"
@@ -269,60 +259,74 @@ class (db$Aglo)
 
 db <- db %>% mutate (categoria= as.factor (db$categoria))
 class (db$categoria)
-###
-###
 
+
+###############################
+###############################
+# VERIFICAR VALORES UNIQUE
 
 ##Por ultimo hay que verificar que ninguna variable explicativa tenga valores unique (es decir que sea igualita en todas las observaciones)
 
-sapply(lapply(db, unique), length)
+sapply(lapply(db, unique), length) #aqui vemos que ya no hay ninguna con el valor de 1
 
-which(sapply(db, function(x) length(unique(x))<2))
-
-
-### Estimation in a linear model with many confounding factors
+which(sapply(db, function(x) length(unique(x))<2)) #0
 
 
-# ###
-# #Dimensions
-# 
-# dim(db)
-# 
-# #[1] 61 56 -- 61 observaciones, 56 variables  ##THE NUMBER OF COVARIATES IS LARGE RELATIVE TO THE SAMPLE SIZE
-# 
-# 
-# ###
-# #Establecer nuestras variables
-# 
-# y_sub10m <- db [,55, drop=F] #variable y de subsidios por cada 10mil habitantes
-# y_vis10m <- db [,54, drop=F] #variable y de vis por cada 10mil habitantes
-# 
-# d_exp <- db [,33, drop=F] #variable "tratamiento" (aumento suelo expansion)
-# 
-# x <- as.matrix(db)[,-c(33,55,56,1,2)] #matriz del resto de variables #le elimino las variables 1 y 2 porque son id = multicolinearidad con municipios
-# 
-# varnames <- colnames(db)
-# 
-# 
-# #####################
-# # First:  Estimate by OLS
-# 
-# xnames <- varnames [-c(33,54,55,1,2)]
-# 
-# dandxnames <- varnames [-c(55,54,1,2)]
-# 
-# fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
-# 
-# ls_effect_sub <- lm (fmla_sub, data= db) #pese a la limpieza de las variables, esto no ha querido correr
+
+###############################
+###############################
+# MODIFICACIONES A VARIABLES EXISTENTES
+
+#########
+#VARIABLE: dummy POT (proxy): toma valor de 1 si el pot fue modificado cuando el decreto de incorporacion automatica estuvo vigente
+# 0 de lo contrario
 
 
-##########################################################################################################
+db <- db %>% mutate (pot_exc = ULT_POT)
+class (db$pot_exc)
+summary(db$pot_exc)
 
-###
-# Voy a crear un subset de la base porque la base completa tiene muchas variables repetidas o innecesarias
+db <- db %>% mutate (pot_exc = if_else (pot_exc >= 2015 & pot_exc <= 2020 , 1, 0))
 
+
+#########
+#VARIABLE: Dummies por Aglomeracion
+
+
+
+
+
+
+#########
+#VARIABLE: Dummies por Categoria
+
+
+
+
+
+
+
+###############################
+###############################
+## Estadisticas Descriptivas
+
+# ----------- pendiente realizar estadisticas descriptivas
+
+
+
+
+
+
+
+
+#####################
+# 3. Estimacion
+#####################
+
+#Verifico los nombres de todas las variables disponibles
 colnames(db)
 
+#(actualizar)
 #[1] "codmpio"                 "DEPARTAMENTO"            "MUNICIPIO"               "Aglomeración"            "diskm"                  
 #[6] "disminutos"              "AÑO_orig"                "ULT_POT"                 "Hogares2005"             "Defhab2005"             
 #[11] "Defcuant2005"            "Defcuali2005"            "VIS"                     "IndVIS"                  "Totalsueloexpansion"    
@@ -332,6 +336,10 @@ colnames(db)
 #[31] "POB10mil"                "VIS10MIL"                "dismdo"                  "y_total"                 "g_total"                
 #[36] "finan"                   "DF_desemp_fisc"          "DI_desemp_int"           "indesarrollo_mun"        "indesarrollo_dep"       
 #[41] "inv_en_vivienda"         "inv_total"               "categoria"  
+
+
+
+###############Seleccionamos las mas relevantes para nuestro analisis
 
 #Aglomeración
 #diskm
@@ -368,14 +376,21 @@ colnames(db)
 
 
 
-#dbs <- select(filter(db),c( diskm,  disminutos, ULT_POT, subtotal, subvis,  Defhab2020, Defcuant2020, Defcuali2020,  Defhab2005, 
-#                            Defcuant2005,Defcuali2005,  VIS, Indsub, IndVIS, proporcionareaexpansion,  Valorsuelo,  indrural, 
-#                            altura, pib_percapita, gpc, gini, pobreza, nbicabecera, IPM_urb, Aglo, VIS10MIL, SUB10MIL ))  #Sari meti muchas variables aca pero revisa si falta o sobra alguna 
+########## LO QUE VAMOS A HACER ES PLANTEAR VARIAS ESPECIFICACIONES PARA VER COMO SE COMPORTA LA METODOLOGIA
 
-#dbs <- select(filter(db),c( Aglomeración , diskm , disminutos , AÑO_orig , ULT_POT , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
-#                            proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
-#                            nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
-#                            indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total , categoria ))
+
+############################################################################################################
+
+### A) VERSION ORIGINAL DE LO ANALIZADO PREVIAMENTE (POCAS VARIABLES)
+
+
+db_a <- select(filter(db),c(VIS10MIL, proporcionareaexpansion, IPM_urb, Defcuant2005, IndVIS, Valorsuelo ))
+cor(db_a)
+
+
+
+
+
 
 dbs_2 <- select(filter(db),c(diskm , disminutos , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
                             proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
@@ -385,33 +400,11 @@ dbs_2 <- select(filter(db),c(diskm , disminutos , Defhab2005 , Defcuant2005 , De
 cor(dbs_2) #matriz de correlaciones
 
 
-###################
-###################
-# CREACION DE VARIABLE POT MODIFICADO EXCEPCIONALMENTE
-
-#LA CREÉ EN OTRA BASE LLAMADA dbs_2c por si pasaba algo, pero creo que si funciona
-
-
-dbs_2c <- select(filter(db),c(diskm , disminutos , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
-                             proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
-                             nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
-                             indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total, ULT_POT ))
-
-
-dbs_2c <- dbs_2c %>% mutate (pot_exc = ULT_POT)
-class (dbs_2c$pot_exc)
-
-dbs_2c <- dbs_2c %>% mutate (pot_exc= as.numeric(dbs_2c$pot_exc))
-class (dbs_2c$pot_exc)
-summary(dbs_2c$pot_exc)
-
-dbs_2c <- dbs_2c %>% mutate (pot_exc = if_else (pot_exc >= 2015 & pot_exc <= 2020 , 1, 0))
 
 
 
 
 
-#cor(db) (No corre)
 
 
 #################### 
