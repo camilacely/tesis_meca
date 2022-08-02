@@ -214,7 +214,7 @@ class (db$AÑO_orig)
 # $Aglo
 # [1] "haven_labelled" "vctrs_vctr"     "double"        
 
-db <- db %>% mutate (Aglo= as.factor (db$Aglo))
+db <- db %>% mutate (Aglo= as.numeric (db$Aglo))
 class (db$Aglo)
 
 # 
@@ -430,12 +430,68 @@ db <- db %>%
 
 # ----------- pendiente realizar estadisticas descriptivas
 
+### se incluyen controles de acuerdo con 3 criterios: de la politica de vivienda, de construccion, caracteristicas de municipios y capacidades municipales
+db %>%
+  select(VIS10MIL, proporcionareaexpansion) %>%
+  tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})",
+                               all_categorical() ~ "{n} / {N} ({p}%)"))
+
+db %>%
+  select(Defcuant2005 , IPM_urb , pobl_urb , pib_percapita , gpc , gini , pobreza , 
+         nbicabecera , IPM_urb) %>%
+  tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})",
+                               all_categorical() ~ "{n} / {N} ({p}%)")) 
+
+db %>%
+  select(IndVIS , Valorsuelo , ) %>%
+  tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})",
+                               all_categorical() ~ "{n} / {N} ({p}%)"))
+
+db %>%
+  select(diskm , disminutos , indrural , altura , dismdo, Aglomeración) %>%
+  tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})",
+                               all_categorical() ~ "{n} / {N} ({p}%)")) 
+
+db %>%
+  select(y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
+         indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total, categoria) %>%
+  tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})",
+                               all_categorical() ~ "{n} / {N} ({p}%)")) 
 
 
+#variables y y d
+ggplot () + geom_boxplot(data=db, aes(x=VIS10MIL), fill ="tomato", alpha=0.5)
+ggplot () + geom_boxplot(data=db, aes(x=proporcionareaexpansion), fill ="tomato", alpha=0.5)
 
+#
+d <- ggplot(db, aes(x=VIS10MIL)) + 
+  geom_density()
+d+ geom_vline(aes(xintercept=mean(VIS10MIL)),
+              color="steelblue", linetype="dashed", size=1.25)
 
+d <- ggplot(db, aes(x=proporcionareaexpansion)) + 
+  geom_density()
+d+ geom_vline(aes(xintercept=mean(proporcionareaexpansion)),
+              color="steelblue", linetype="dashed", size=1.25)
+#
+#y contra d
+g <- ggplot(data = db , mapping = aes(x = proporcionareaexpansion , y = VIS10MIL))+
+  geom_point(col = "tomato" , size = 3)
+g
 
+box_plot <- ggplot(data=db , mapping = aes(x=VIS10MIL , y=proporcionareaexpansion)) + 
+  geom_boxplot()
+box_plot
 
+#habilitacion de suelo contra capacidad de los municipios
+box_plot <- ggplot(data=db , mapping = aes(as.factor(categoria) , proporcionareaexpansion)) + 
+  geom_boxplot() 
+box_plot
+
+#construccion de vivienda contra capacidad de los municipios
+box_plot <- ggplot(data=db , mapping = aes(as.factor(categoria) , VIS10MIL)) + 
+  geom_boxplot() 
+box_plot
 
 #####################
 # 3. Estimacion
