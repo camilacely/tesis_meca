@@ -1,11 +1,9 @@
 
 ###################################
-## Big Data - Problem Set 3 #######
+## Big Data - Final Project #######
 # Maria Camila Cely , Sara Ospina #
-###### Julio 2022 #################
+###### Agosto 2022 ################
 ###################################
-
-# FINAL PROJECT #
 
 #####################
 # 1. Data Acquisition
@@ -15,6 +13,7 @@
 rm(list=ls())
 
 
+###############################
 ###############################
 ## Llamar/instalar las librerias
 
@@ -30,34 +29,21 @@ p_load(tidyverse,    #Para limpiar los datos
        rvest,
        dplyr,
        stargazer,
-       gtsummary,
-       expss,
-       fastAdaboost,
-       randomForest,
-       xgboost,
-       glmnet,
-       pROC,
-       class,
-       sf,
        leaflet,
-       tmaptools,
-       osmdata, 
-       skim, 
-       readr) #por ahora llame todas las del problem set 3
+       haven,
+       hdm)
 
-predict<- stats::predict  #con esto soluciono el problema de que haya mas de una libreria con este comando
-
-
-###############################
+##############################
+##############################
 ## Directorio
 
 #setwd("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS")
-
 setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 
 
 ###############################
-## Importar de Stata
+###############################
+## Importacion de Stata
 
 #la base la veniamos trabajando en stata, por lo tanto la vamos a importar
 
@@ -70,16 +56,25 @@ setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 #export(BASE_TESIS_3107,"C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/stores/BASE_TESIS.rds")
 
 
-
+###############################
 ###############################
 ## Importar la base final a R
 
 db <-readRDS("stores/BASE_TESIS.Rds") 
-
 summary (db)
 #no tenemos NA
 
+
+###############################
+###############################
+## Estadisticas Descriptivas
+
 # ----------- pendiente realizar estadisticas descriptivas
+
+
+
+
+
 
 
 
@@ -88,17 +83,12 @@ summary (db)
 # 2. Estimation
 #####################
 
-install.packages("hdm")
-require("hdm")
 
 ###
-#IDENTIFICACION DE VARIABLES
+#IDENTIFICACION DE VARIABLES 
 
-
-# y (subsidios) : SUB10MIL #57
-# y (vis) : VIS10MIL       #56 Creo que dejar solo esta y centrarnos solo en el efecto sobre VIS, así todo es solo con las 52 obs
-
-# d (tratamiento) : proporcionareaexpansion #33
+# y (vis) : VIS10MIL      
+# d (tratamiento) : proporcionareaexpansion 
 
 ####
 #las variables tienen que ser numeric o factor
@@ -391,9 +381,37 @@ dbs_2 <- select(filter(db),c(diskm , disminutos , Defhab2005 , Defcuant2005 , De
                             proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
                             nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
                             indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total ))
-cor(dbs_2)
 
-cor(db)
+cor(dbs_2) #matriz de correlaciones
+
+
+###################
+###################
+# CREACION DE VARIABLE POT MODIFICADO EXCEPCIONALMENTE
+
+#LA CREÉ EN OTRA BASE LLAMADA dbs_2c por si pasaba algo, pero creo que si funciona
+
+
+dbs_2c <- select(filter(db),c(diskm , disminutos , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
+                             proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
+                             nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
+                             indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total, ULT_POT ))
+
+
+dbs_2c <- dbs_2c %>% mutate (pot_exc = ULT_POT)
+class (dbs_2c$pot_exc)
+
+dbs_2c <- dbs_2c %>% mutate (pot_exc= as.numeric(dbs_2c$pot_exc))
+class (dbs_2c$pot_exc)
+summary(dbs_2c$pot_exc)
+
+dbs_2c <- dbs_2c %>% mutate (pot_exc = if_else (pot_exc >= 2015 & pot_exc <= 2020 , 1, 0))
+
+
+
+
+
+#cor(db) (No corre)
 
 
 #################### 
@@ -408,6 +426,11 @@ cor(db)
 #xs <- as.matrix(dbs)[,-c(21,10)] #matriz del resto de variables 
 
 #varnames <- colnames(dbs)
+
+
+
+
+
 
 ############################
 ############################
@@ -454,9 +477,10 @@ dandxnames_2 <- varnames_2 [-c(18)]
 #fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
 fmla_sub_2 <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_2, collapse= "+")))
 
-ls_effect_sub_2 <- lm (fmla_sub_2, data = dbs_2) #AQUI SI CORRE, pero hay que solucionarle los NAs
+ls_effect_sub_2 <- lm (fmla_sub_2, data = dbs_2) #AQUI SI CORRE
 
-summary(ls_effect_sub_2)
+summary(ls_effect_sub_2) #recordar que esto es por OLS
+
 #####################
 # Second:  Estimate the effect by the partialling out by Post-Lasso
 
@@ -486,16 +510,23 @@ tab
 
 ##PENDIENTES
 
-# 1 - terminar codigo (hoy) - Sara >> buenas noticias: corre el codigo, malas noticias: nada nos da significativo, no se si correr solo con un par mas, no tantas 
+# 1 - terminar codigo (hoy) - Sara >> buenas noticias: corre el codigo, malas noticias: nada nos da significativo, no se si correr solo con un par mas, no tantas ##ahorita vemos 
+#_______ Ya, pendiente cacharrearle y ver que pasa con las significancias
+
 
 # 2 - Sara - variable pablo querubin (2011)  
 # 2 - Camila - variable dummy pot           (mañana primera hora)
+#________ Ya
+
+# 2.5 dummies de aglomeracion y categoria
+
+
 
 # 3 - correr (asumamos que sale bien todo) - Sara
 # 3 - montar rapidamente borrador de paper - Camila
 
 # 4 - hacer estadisticas descriptivas y nutrir el paper - Sara
-# 4 - esto puede incluir mapas                          - Camila
+# 4 - esto puede incluir mapas                          - Camila (para anexos)
 
 # 5 - Consolidar y enviar
 
@@ -503,6 +534,9 @@ tab
 # Otros pendientes
 
 # - preguntarle a Ignacio lo de aglomeracion
+
+# si nos sobra el tiempo hacer causal trees
+
 
 
 
