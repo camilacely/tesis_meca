@@ -62,9 +62,9 @@ setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 #la base la veniamos trabajando en stata, por lo tanto la vamos a importar
 
 # # input Stata file
- library(haven)
- BASE_TESIS_3107 <- read_dta("DATOS/BASE TESIS 3107.dta")
- View(BASE_TESIS_3107)
+# library(haven)
+# BASE_TESIS_3107 <- read_dta("DATOS/BASE TESIS 3107.dta")
+# View(BASE_TESIS_3107)
 # 
 # 
 #export(BASE_TESIS_3107,"C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/stores/BASE_TESIS.rds")
@@ -234,7 +234,7 @@ class (db$ULT_POT)
 # $Aglo
 # [1] "haven_labelled" "vctrs_vctr"     "double"        
 
-db <- db %>% mutate (Aglo= as.numeric (db$Aglo))
+db <- db %>% mutate (Aglo= as.factor (db$Aglo))
 class (db$Aglo)
 
 # 
@@ -382,10 +382,10 @@ colnames(db)
 #                            Defcuant2005,Defcuali2005,  VIS, Indsub, IndVIS, proporcionareaexpansion,  Valorsuelo,  indrural, 
 #                            altura, pib_percapita, gpc, gini, pobreza, nbicabecera, IPM_urb, Aglo, VIS10MIL, SUB10MIL ))  #Sari meti muchas variables aca pero revisa si falta o sobra alguna 
 
-dbs <- select(filter(db),c( Aglomeración , diskm , disminutos , AÑO_orig , ULT_POT , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
-                            proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
-                            nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
-                            indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total , categoria ))
+#dbs <- select(filter(db),c( Aglomeración , diskm , disminutos , AÑO_orig , ULT_POT , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
+#                            proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
+#                            nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
+#                            indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total , categoria ))
 
 dbs_2 <- select(filter(db),c(diskm , disminutos , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
                             proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
@@ -395,15 +395,19 @@ cor(dbs_2)
 
 cor(db)
 
-#y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
-y_vis10 <- dbs [,21, drop=F] #variable y de vis por cada 10mil habitantes
 
-d_ex <- dbs [,10, drop=F] #variable "tratamiento" (aumento suelo expansion)
+#################### 
+
+#y_sub10 <- dbs [,27, drop=F] #variable y de subsidios por cada 10mil habitantes
+
+#y_vis10 <- dbs [,21, drop=F] #variable y de vis por cada 10mil habitantes
+
+#d_ex <- dbs [,10, drop=F] #variable "tratamiento" (aumento suelo expansion)
 
 #xs <- as.matrix(dbs)[,-c(27,26,15)] #matriz del resto de variables 
-xs <- as.matrix(dbs)[,-c(21,10)] #matriz del resto de variables 
+#xs <- as.matrix(dbs)[,-c(21,10)] #matriz del resto de variables 
 
-varnames <- colnames(dbs)
+#varnames <- colnames(dbs)
 
 ############################
 ############################
@@ -422,19 +426,19 @@ varnames_2 <- colnames(dbs_2)
 # First:  Estimate by OLS
 
 #xnames <- varnames [-c(27,26,15)]
-xnames <- varnames [-c(21,10)]
+#xnames <- varnames [-c(21,10)]
 
 #dandxnames <- varnames [-c(27,26,15)]
-dandxnames <- varnames [-c(21)]
+#dandxnames <- varnames [-c(21)]
 
 #fmla_sub <- as.formula (paste ("SUB10MIL ~ ", paste(dandxnames, collapse= "+")))
-fmla_sub <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames, collapse= "+")))
+#fmla_sub <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames, collapse= "+")))
 
 
 
-ls_effect_sub <- lm (fmla_sub, data = dbs) #AQUI SI CORRE, pero hay que solucionarle los NAs
+#ls_effect_sub <- lm (fmla_sub, data = dbs) #AQUI SI CORRE, pero hay que solucionarle los NAs
 
-summary(ls_effect_sub)
+#summary(ls_effect_sub)
 
 ##################################################
 ##################################################
@@ -456,21 +460,35 @@ summary(ls_effect_sub_2)
 #####################
 # Second:  Estimate the effect by the partialling out by Post-Lasso
 
+lasso.effect <- rlassoEffect(x=xs_2, y=y_vis10_2, d=d_ex_2, method= "partialling out") #pendiente segun respuesta de ignacio
+summary(lasso.effect)
+
+####################
+# Third:  Estimate the effect by the double selection method
+
+doublesel.effect <- rlassoEffect(x=xs_2, y=y_vis10_2, d=d_ex_2, method= "double selection") #pendiente segun respuesta de ignacio
+summary(doublesel.effect)
 
 
-lasso.effect <- rlassoEffect(x=xs_2, y=y_vis10_2, d=d_ex_2, method= "double selection") #pendiente segun respuesta de ignacio
+####################
+# Collect results
 
+install.packages("xtable")
+library(xtable)
+table = rbind(summary(ls_effect_sub_2)$coef["proporcionareaexpansion", 1:2], summary(lasso.effect)$coef[, 1:2], 
+              summary(doublesel.effect)$coef[, 1:2]) 
+colnames(table) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table) = c("full reg via ols", "partial reg
+via post-lasso ", "partial reg via double selection")
+tab = xtable(table, digits = c(2, 2, 5))
 
-Eff = rlassoEffect(X[, -1], y, X[, 1], method = "partialling out")
-summary(Eff)$coef[, 1:2]
-
-
+tab
 
 ##PENDIENTES
 
-# 1 - terminar codigo (hoy) - Sara
+# 1 - terminar codigo (hoy) - Sara >> buenas noticias: corre el codigo, malas noticias: nada nos da significativo, no se si correr solo con un par mas, no tantas 
 
-# 2 - Sara - variable pablo querubin (2011)
+# 2 - Sara - variable pablo querubin (2011)  
 # 2 - Camila - variable dummy pot           (mañana primera hora)
 
 # 3 - correr (asumamos que sale bien todo) - Sara
