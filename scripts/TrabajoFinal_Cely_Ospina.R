@@ -32,7 +32,8 @@ p_load(tidyverse,    #Para limpiar los datos
        leaflet,
        haven,
        hdm,
-       xtable)
+       xtable,
+       sf)
 
 ##############################
 ##############################
@@ -873,19 +874,183 @@ tab_f
 
 
 
+#####################
+# 4. Visualizacion
+#####################
+
+# Adicionalmente, vamos a ver como se comportan los proyectos VIS en aglomeraciones especificas de acuerdo con algunas de las variables vistas
 
 
+#base municipios colombia
+
+mun <-read_sf("stores/Municipios/Municipios.shp")
+mun <- st_transform(mun, 4326)
+
+leaflet() %>% addTiles() %>% addPolygons(data=mun) #se demora un poco en cargar porque son todos los municipios del pais
 
 
+#base proyectos VIS
+
+coord_vis<-haven::read_dta("stores/coord_proyectos_vis.dta")
+coord_vis<-st_as_sf(coord_vis, coords=c("Longitud", "Latitud"))
+coord_vis <- st_set_crs(coord_vis, "+proj=longlat +datum=WGS84")
+coord_vis <- st_transform(coord_vis, 4326)
+
+leaflet() %>% addTiles() %>% addPolygons(data=mun, fill=NA)  %>% addCircleMarkers(data=coord_vis, col="red")
 
 
+db_mun <- select(filter(db),c(codmpio, VIS10MIL, proporcionareaexpansion )) 
+
+db_mun <- db_mun %>% mutate (COD_MUNIC = codmpio )
+
+mun <- mun %>% mutate (COD_MUNIC= as.numeric (mun$COD_MUNIC))
+
+db_mun <- left_join(db_mun, mun)
+
+summary(db_mun)
+summary(mun)
+
+class(db_mun)
+class(mun)
+
+db_mun <- st_as_sf (db_mun)
 
 
+#######
+# vamos a intentar ver la relacion entre suelo habilitado y vis por cada 10mil habitantes en mapas paralelos
 
 
+#### En este mapa 1 veremos los municipios con mayor proporcion de suelo habilitado
+
+summary (db_mun$proporcionareaexpansion)
+
+upper_bound_cp1<-0.2  
+upper_bound_cp2<-0.4
+upper_bound_cp3<-0.6
+upper_bound_cp4<-0.8
+upper_bound_cp5<-1
 
 
+upper_bound_cp1 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp1, na.rm=T)  
+upper_bound_cp1 
 
+upper_bound_cp2 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp2, na.rm=T)  
+upper_bound_cp2 
+
+upper_bound_cp3 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp3, na.rm=T)  
+upper_bound_cp3
+
+upper_bound_cp4 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp4, na.rm=T)  
+upper_bound_cp4
+
+upper_bound_cp5 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp5, na.rm=T)  
+upper_bound_cp5
+
+
+db_mun <- db_mun %>% 
+  mutate(cp1 = if_else( proporcionareaexpansion <= upper_bound_cp1, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(cp2 = if_else( proporcionareaexpansion <= upper_bound_cp2, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(cp2 = if_else( proporcionareaexpansion > upper_bound_cp1, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(cp3 = if_else( proporcionareaexpansion <= upper_bound_cp3, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(cp3 = if_else( proporcionareaexpansion > upper_bound_cp2, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(cp4 = if_else( proporcionareaexpansion <= upper_bound_cp4, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(cp4 = if_else( proporcionareaexpansion > upper_bound_cp3, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(cp5= if_else( proporcionareaexpansion <= upper_bound_cp5, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(cp5 = if_else( proporcionareaexpansion > upper_bound_cp4, 1, 0))
+
+
+colorcp <- rep(NA, nrow(db_mun))
+
+colorcp[db_mun$cp1 == 1] <- "#CAF0F8"   
+colorcp[db_mun$cp2 == 1] <- "#90E0EF"
+colorcp[db_mun$cp3 == 1] <- "#00B4D8"
+colorcp[db_mun$cp4 == 1] <- "#0077B6"
+colorcp[db_mun$cp5 == 1] <- "#03045E"  #el mas oscuro es el que mas crecio en area de expansion
+
+#MAPA 1
+leaflet() %>% addTiles() %>% addCircleMarkers(
+  data=coord_vis, color= "black", fillOpacity=1 , opacity=1, radius=1) %>% addPolygons(
+    data= db_mun, color= colorcp, fillOpacity=0.5, opacity = 0.5)
+
+
+#### Ahora en el mapa 2 veremos los municipios con mayor proporcion de VIS por cada 10mil habitantes
+
+summary (db_mun$VIS10MIL)
+
+upper_bound_c1<-0.2  
+upper_bound_c2<-0.4
+upper_bound_c3<-0.6
+upper_bound_c4<-0.8
+upper_bound_c5<-1
+
+
+upper_bound_c1 <- quantile(db_mun$VIS10MIL, upper_bound_c1, na.rm=T)  
+upper_bound_c1 
+
+upper_bound_c2 <- quantile(db_mun$VIS10MIL, upper_bound_c2, na.rm=T)  
+upper_bound_c2 
+
+upper_bound_c3 <- quantile(db_mun$VIS10MIL, upper_bound_c3, na.rm=T)  
+upper_bound_c3
+
+upper_bound_c4 <- quantile(db_mun$VIS10MIL, upper_bound_c4, na.rm=T)  
+upper_bound_c4
+
+upper_bound_c5 <- quantile(db_mun$VIS10MIL, upper_bound_c5, na.rm=T)  
+upper_bound_c5
+
+
+db_mun <- db_mun %>% 
+  mutate(c1 = if_else( VIS10MIL <= upper_bound_c1, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(c2 = if_else( VIS10MIL <= upper_bound_c2, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(c2 = if_else( VIS10MIL > upper_bound_c1, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(c3 = if_else( VIS10MIL <= upper_bound_c3, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(c3 = if_else( VIS10MIL > upper_bound_c2, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(c4 = if_else( VIS10MIL <= upper_bound_c4, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(c4 = if_else( VIS10MIL > upper_bound_c3, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(c5= if_else( VIS10MIL <= upper_bound_c5, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(c5 = if_else( VIS10MIL > upper_bound_c4, 1, 0))
+
+
+colorc <- rep(NA, nrow(db_mun))
+
+colorc[db_mun$c1 == 1] <- "#FF9B54"   
+colorc[db_mun$c2 == 1] <- "#FF7F51"
+colorc[db_mun$c3 == 1] <- "#CE4257"
+colorc[db_mun$c4 == 1] <- "#720026"
+colorc[db_mun$c5 == 1] <- "#4F000B"  #el mas oscuro es el que mas tiene VIS por cada 10 mil hab
+
+#MAPA 2
+leaflet() %>% addTiles() %>% addCircleMarkers(
+  data=coord_vis, color= "black", fillOpacity=1 , opacity=1, radius=1) %>% addPolygons(
+    data= db_mun, color= colorc, fillOpacity=0.5, opacity = 0.5)
+
+
+########################################################################################################
 
 
 
