@@ -561,6 +561,7 @@ colnames(db)
 ########## LO QUE VAMOS A HACER ES PLANTEAR VARIAS ESPECIFICACIONES PARA VER COMO SE COMPORTA LA METODOLOGIA
 
 
+
 ############################################################################################################
 
 ### A) VERSION ORIGINAL DE LO ANALIZADO PREVIAMENTE (POCAS VARIABLES) -- esta intuicion ya la habiamos trabajado previamente en stata 
@@ -740,26 +741,135 @@ summary(ls_effect_d)
 
 ##
 # Second:  Estimate the effect by the partialling out by Post-Lasso
-lasso_effect_c <- rlassoEffect(x=x_c, y=y_c, d=d_c, method= "partialling out") 
-summary(lasso_effect_c)
+lasso_effect_d <- rlassoEffect(x=x_d, y=y_d, d=d_d, method= "partialling out") 
+summary(lasso_effect_d)
 
 
 ##
 # Third:  Estimate the effect by the double selection method
-doublesel_effect_c <- rlassoEffect(x=x_c, y=y_c, d=d_c, method= "double selection") 
-summary(doublesel_effect_c)
+doublesel_effect_d <- rlassoEffect(x=x_d, y=y_d, d=d_d, method= "double selection") 
+summary(doublesel_effect_d)
 
 
 ##
 # Collect results
 
-table_c = rbind(summary(ls_effect_c)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_c)$coef[, 1:2], 
-                summary(doublesel_effect_c)$coef[, 1:2]) 
-colnames(table_c) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
-rownames(table_c) = c("full reg via ols", "partial reg
+table_d = rbind(summary(ls_effect_d)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_d)$coef[, 1:2], 
+                summary(doublesel_effect_d)$coef[, 1:2]) 
+colnames(table_d) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table_d) = c("full reg via ols", "partial reg
 via post-lasso ", "partial reg via double selection")
-tab_c = xtable(table_c, digits = c(2, 2, 5))
-tab_c
+tab_d = xtable(table_d, digits = c(2, 2, 5))
+tab_d
+
+
+############################################################################################################
+
+### E) SIN EFECTOS FIJOS, PERO CON TODAS LAS VARIABLES DE LA BASE
+
+db_e <- select(filter(db),c(VIS10MIL, proporcionareaexpansion, diskm , disminutos , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
+                             Valorsuelo , pobl_urb  , altura , pib_percapita , gpc , gini , pobreza , 
+                             nbicabecera , IPM_urb , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
+                             indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total , pot_exc )) #indrural
+cor(db_e)
+
+
+
+
+y_e <- db_e [,1, drop=F] #variable y de vis por cada 10mil habitantes
+d_e <- db_e [,2, drop=F] #variable "tratamiento" (aumento suelo expansion)
+x_e <- as.matrix(db_e)[,-c(1,2)] #matriz del resto de variables 
+
+varnames_e <- colnames(db_e)
+
+##
+# First:  Estimate by OLS
+xnames_e <- varnames_e [-c(1,2)]
+dandxnames_e <- varnames_e [-c(1)]
+
+fmla_e <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_e, collapse= "+")))
+
+ls_effect_e <- lm (fmla_e, data = db_e)
+
+summary(ls_effect_e) 
+
+##
+# Second:  Estimate the effect by the partialling out by Post-Lasso
+lasso_effect_e <- rlassoEffect(x=x_e, y=y_e, d=d_e, method= "partialling out") 
+summary(lasso_effect_e)
+
+
+##
+# Third:  Estimate the effect by the double selection method
+doublesel_effect_e <- rlassoEffect(x=x_e, y=y_e, d=d_e, method= "double selection") 
+summary(doublesel_effect_e)
+
+
+##
+# Collect results
+
+table_e = rbind(summary(ls_effect_e)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_e)$coef[, 1:2], 
+                summary(doublesel_effect_e)$coef[, 1:2]) 
+colnames(table_e) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table_e) = c("full reg via ols", "partial reg
+via post-lasso ", "partial reg via double selection")
+tab_e = xtable(table_e, digits = c(2, 2, 5))
+tab_e
+
+
+############################################################################################################
+
+### F) CON "UNA SOLA" DE LAS VARIABLES QUE MIDEN COSAS PARECIDAS (APROXIMACION INTUITIVA)
+
+db_f <- select(filter(db),c(VIS10MIL, proporcionareaexpansion, diskm , Defcuant2005 , Defcuali2005 , IndVIS , 
+                          Valorsuelo , pobl_urb  , altura , pib_percapita , IPM_urb , dismdo , y_total  , 
+                            indesarrollo_mun ,  inv_en_vivienda , pot_exc, indrural )) 
+
+cor(db_f)
+
+lapply(db_f, class)
+
+
+
+y_f <- db_f [,1, drop=F] #variable y de vis por cada 10mil habitantes
+d_f <- db_f [,2, drop=F] #variable "tratamiento" (aumento suelo expansion)
+x_f <- as.matrix(db_f)[,-c(1,2)] #matriz del resto de variables 
+
+varnames_f <- colnames(db_f)
+
+##
+# First:  Estimate by OLS
+xnames_f <- varnames_f [-c(1,2)]
+dandxnames_f <- varnames_f [-c(1)]
+
+fmla_f <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_f, collapse= "+")))
+
+ls_effect_f <- lm (fmla_f, data = db_f)
+
+summary(ls_effect_f) 
+
+##
+# Second:  Estimate the effect by the partialling out by Post-Lasso
+lasso_effect_f <- rlassoEffect(x=x_f, y=y_f, d=d_f, method= "partialling out") 
+summary(lasso_effect_f)
+
+
+##
+# Third:  Estimate the effect by the double selection method
+doublesel_effect_f <- rlassoEffect(x=x_f, y=y_f, d=d_f, method= "double selection") 
+summary(doublesel_effect_f)
+
+
+##
+# Collect results
+
+table_f = rbind(summary(ls_effect_f)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_f)$coef[, 1:2], 
+                summary(doublesel_effect_f)$coef[, 1:2]) 
+colnames(table_f) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table_f) = c("full reg via ols", "partial reg
+via post-lasso ", "partial reg via double selection")
+tab_f = xtable(table_f, digits = c(2, 2, 5))
+tab_f
 
 
 
@@ -769,12 +879,6 @@ tab_c
 
 
 
-dbs_2 <- select(filter(db),c(diskm , disminutos , Defhab2005 , Defcuant2005 , Defcuali2005 , IndVIS , 
-                            proporcionareaexpansion , Valorsuelo , pobl_urb , indrural , altura , pib_percapita , gpc , gini , pobreza , 
-                            nbicabecera , IPM_urb , VIS10MIL , dismdo , y_total , g_total , finan , DF_desemp_fisc , DI_desemp_int , 
-                            indesarrollo_mun , indesarrollo_dep , inv_en_vivienda , inv_total ))
-
-cor(dbs_2) #matriz de correlaciones
 
 
 
@@ -782,43 +886,6 @@ cor(dbs_2) #matriz de correlaciones
 
 
 
-
-
-
-
-
-
-
-
-
-##PENDIENTES
-
-# 1 - terminar codigo (hoy) - Sara >> buenas noticias: corre el codigo, malas noticias: nada nos da significativo, no se si correr solo con un par mas, no tantas ##ahorita vemos 
-#_______ Ya, pendiente cacharrearle y ver que pasa con las significancias
-
-
-# 2 - Sara - variable pablo querubin (2011)  
-# 2 - Camila - variable dummy pot           (mañana primera hora)
-#________ Ya
-
-# 2.5 dummies de aglomeracion y categoria
-
-
-
-# 3 - correr (asumamos que sale bien todo) - Sara
-# 3 - montar rapidamente borrador de paper - Camila
-
-# 4 - hacer estadisticas descriptivas y nutrir el paper - Sara
-# 4 - esto puede incluir mapas                          - Camila (para anexos)
-
-# 5 - Consolidar y enviar
-
-
-# Otros pendientes
-
-# - preguntarle a Ignacio lo de aglomeracion
-
-# si nos sobra el tiempo hacer causal trees
 
 
 
