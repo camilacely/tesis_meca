@@ -8,3 +8,5 @@ En este repositorio se pueden encontrar las siguientes carpetas:
 - Stores: Contiene las bases de datos
 - Views: Contiene las tablas, gráficas y mapas
 - Document: Contiene el documento final en formato PDF
+
+María Camila Cely Moreno - Sara Ospina Giraldo
