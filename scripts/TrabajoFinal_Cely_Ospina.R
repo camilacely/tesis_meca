@@ -158,9 +158,6 @@ class (db$AÑO_orig)
 # $VIS
 # [1] "numeric"
 # 
-# $Indsub
-# [1] "numeric"
-# 
 # $IndVIS
 # [1] "numeric"
 # 
@@ -261,13 +258,8 @@ class (db$Aglo)
 db <- db %>% mutate (categoria= as.factor (db$categoria))
 class (db$categoria)
 
-
-
 ###
 ###
-
-
-
 ###############################
 ###############################
 # VERIFICAR VALORES UNIQUE
@@ -278,8 +270,6 @@ sapply(lapply(db, unique), length) #aqui vemos que ya no hay ninguna con el valo
 
 which(sapply(db, function(x) length(unique(x))<2)) #0
 
-
-
 ###############################
 ###############################
 # MODIFICACIONES A VARIABLES EXISTENTES
@@ -288,19 +278,14 @@ which(sapply(db, function(x) length(unique(x))<2)) #0
 #VARIABLE: dummy POT (proxy): toma valor de 1 si el pot fue modificado cuando el decreto de incorporacion automatica estuvo vigente
 # 0 de lo contrario
 
-
 db <- db %>% mutate (pot_exc = ULT_POT)
 class (db$pot_exc)
 summary(db$pot_exc)
 
 db <- db %>% mutate (pot_exc = if_else (pot_exc >= 2015 & pot_exc <= 2020 , 1, 0))
 
-
 #########
 #VARIABLE: Dummies por Aglomeracion
-
-
-#Volver variable de aglomeracion dummies
 
 db <- db %>% 
   mutate(A_Apartado = if_else(db$Aglo==1, 1, 0))
@@ -395,10 +380,6 @@ db <- db %>%
 db <- db %>% 
   mutate(A_Villavicencio = if_else(db$Aglo==38, 1, 0))
 
-
-
-
-
 #########
 #VARIABLE: Dummies por Categoria
 
@@ -422,6 +403,26 @@ db <- db %>%
 
 db <- db %>% 
   mutate(Cat_ESP = if_else(db$categoria=="ESP", 1, 0))
+
+
+var_lab(db$y_total) = "Ingresos Totales"
+var_lab(db$g_total) = "gastos Totales"
+var_lab(db$finan) = "Financiamiento - creditos"
+var_lab(db$DF_desemp_fisc) = "Indicador de desempeño fiscal"
+var_lab(db$DI_desemp_int) = "Indicador de desempeño integral"
+var_lab(db$inv_en_vivienda) = "Inversión en vivienda"
+var_lab(db$inv_total) = "Inversión total"
+var_lab(db$diskm) = "Distancia lineal a la capital del departamento"
+var_lab(db$disminutos) = "Distancia en minutos a la capital del departamento"
+var_lab(db$altura) = "Altura del municipio - MSNM"
+var_lab(db$IndVIS) = "Indicador de concentración de constructores de proyectos VIS"
+var_lab(db$Defcuant2005) = "Déficit cuantitativo en 2005"
+var_lab(db$pobl_urb) = "Población Urbana en 2005"
+var_lab(db$gini) = "Índice de gini municipal"
+var_lab(db$nbicabecera) = "Necesidades Básicas Insatisfechas 2005 cabecera municipal"
+var_lab(db$VIS10MIL) = "Viviendas de Interés Social cada 10mil habitantes"
+var_lab(db$proporcionareaexpansion) = "Proporción area habilitada para suelo de expansión entre 2005 y 2020"
+
 
 
 
@@ -485,7 +486,7 @@ box_plot <- ggplot(data=db , mapping = aes(x=VIS10MIL , y=proporcionareaexpansio
 box_plot
 
 #habilitacion de suelo contra capacidad de los municipios
-box_plot <- ggplot(data=db , mapping = aes(as.factor(categoria) , proporcionareaexpansion)) + 
+box_plot <- ggplot(data=db , mapping = aes(categoria , proporcionareaexpansion)) + 
   geom_boxplot() 
 box_plot
 
