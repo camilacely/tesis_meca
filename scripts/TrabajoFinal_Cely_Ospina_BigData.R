@@ -33,15 +33,14 @@ p_load(tidyverse,    #Para limpiar los datos
        haven,
        hdm,
        xtable,
-       sf,
-       gtsummary)
+       sf)
 
 ##############################
 ##############################
 ## Directorio
 
 #setwd("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS")
-setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
+#setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 
 
 ###############################
@@ -67,85 +66,10 @@ db <-readRDS("stores/BASE_TESIS.Rds")
 summary (db)
 #no tenemos NA
 
-db %>%
-  select(VIS10MIL) %>%
-  tbl_summary()
-
-summary(db$VIS10MIL)
-
-db %>%
-  select(VIS10MIL, Aglo, proporcionareaexpansion, Defhab2005, IPM_urb ) %>%
-  tbl_summary()
-
 
 #####################
 # 2. Limpieza y estadisticas descriptivas
 #####################
-
-
-### ANALISIS DE CORRELACIONES
-
-colnames(db)
-
-ggplot(db, aes(x=Defcuant2005, y=VIS10MIL)) + geom_point()
-
-ggplot(db, aes(x=Valorsuelo, y=VIS10MIL)) + geom_point()
-
-ggplot(db, aes(x=IPM_urb, y=VIS10MIL)) + geom_point()
-
-ggplot(db, aes(x=proporcionareaexpansion, y=VIS10MIL)) + geom_point() 
-
-install.packages("ggpubr")
-library("ggpubr")
-ggscatter(db, x = "Defhab2005", y = "VIS10MIL", 
-          add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Deficit habitacional", ylab = "N° VIS por cada 10.000 hab")
-
-ggscatter(db, x = "Defcuant2005", y = "VIS10MIL", 
-          add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Deficit cuantitativo", ylab = "N° VIS por cada 10.000 hab")
-
-
-ggscatter(db, x = "IPM_urb", y = "VIS10MIL", 
-          add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Indice de Pobreza Multidimensional Urbano", ylab = "N° VIS por cada 10.000 hab")
-
-
-ggscatter(db, x = "Valorsuelo", y = "VIS10MIL", 
-          add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Valor del suelo", ylab = "N° VIS por cada 10.000 hab")
-
-
-ggscatter(db, x = "proporcionareaexpansion", y = "VIS10MIL", 
-          add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson",
-          xlab = "Proporcion area expansion", ylab = "N° VIS por cada 10.000 hab")
-
-
-
-####
-ggplot(db, aes(x=Defcuant2005, y=VIS10MIL)) + geom_point()
-
-ggplot(db, aes(x=Defcuant2005, y=VIS10MIL)) + geom_point() +
-  geom_text(data = db, aes(Defcuant2005,VIS10MIL, label = MUNICIPIO), hjust = 0.2)
-
-ggplot(db, aes(x=Defcuali2005, y=VIS10MIL)) + geom_point()
-
-
-
-
-### HISTOGRAMAS
-
-head(db$Aglo)
-
-db_cali <- db %>% subset(Aglo == 8) #4 obs  ##pendiente
-
-
-
 
 
 ###############################
