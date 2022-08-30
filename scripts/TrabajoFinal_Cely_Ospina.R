@@ -34,7 +34,8 @@ p_load(tidyverse,    #Para limpiar los datos
        hdm,
        xtable,
        sf,
-       gtsummary)
+       gtsummary,
+       ggpubr)
 
 ##############################
 ##############################
@@ -67,6 +68,16 @@ db <-readRDS("stores/BASE_TESIS.Rds")
 summary (db)
 #no tenemos NA
 
+
+# install.packages("writexl")
+# library("writexl")
+# write_xlsx(db,"stores/db_prueba.xlsx")
+
+
+#####################
+# 2. Limpieza y estadisticas descriptivas
+#####################
+
 db %>%
   select(VIS10MIL) %>%
   tbl_summary()
@@ -76,12 +87,6 @@ summary(db$VIS10MIL)
 db %>%
   select(VIS10MIL, Aglo, proporcionareaexpansion, Defhab2005, IPM_urb ) %>%
   tbl_summary()
-
-
-#####################
-# 2. Limpieza y estadisticas descriptivas
-#####################
-
 
 ### ANALISIS DE CORRELACIONES
 
@@ -95,8 +100,8 @@ ggplot(db, aes(x=IPM_urb, y=VIS10MIL)) + geom_point()
 
 ggplot(db, aes(x=proporcionareaexpansion, y=VIS10MIL)) + geom_point() 
 
-install.packages("ggpubr")
-library("ggpubr")
+# install.packages("ggpubr")
+# library("ggpubr")
 ggscatter(db, x = "Defhab2005", y = "VIS10MIL", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
@@ -144,7 +149,12 @@ head(db$Aglo)
 
 db_cali <- db %>% subset(Aglo == 8) #4 obs  ##pendiente
 
+class(db_cali$Defcuant2005)
 
+ggplot(db_cali, aes(x=Defcuant2005)) + 
+  geom_histogram()
+
+plot(x = db_cali$Defcuant2005)
 
 
 
@@ -507,7 +517,7 @@ var_lab(db$proporcionareaexpansion) = "Proporción area habilitada para suelo de
 ###############################
 ## Estadisticas Descriptivas
 
-# ----------- pendiente realizar estadisticas descriptivas
+
 
 ### se incluyen controles de acuerdo con 3 criterios: de la politica de vivienda, de construccion, caracteristicas de municipios y capacidades municipales
 db %>%
@@ -963,6 +973,8 @@ tab_f
 mun <-read_sf("stores/Municipios/Municipios.shp")
 mun <- st_transform(mun, 4326)
 
+
+
 leaflet() %>% addTiles() %>% addPolygons(data=mun) #se demora un poco en cargar porque son todos los municipios del pais
 
 
@@ -992,6 +1004,12 @@ class(mun)
 
 db_mun <- st_as_sf (db_mun)
 
+plot(db_mun)
+
+
+
+leaflet() %>% addTiles() %>% addPolygons(
+    data= db_mun, color= "blue", fillOpacity=0.5, opacity = 0.5)
 
 #######
 # vamos a intentar ver la relacion entre suelo habilitado y vis por cada 10mil habitantes en mapas paralelos
