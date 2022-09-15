@@ -55,6 +55,7 @@ drop if _merge==2
 drop _merge
 replace Valorsuelo = 875064.8683218 in 1
 **aqui ajusté el valor de medellin 
+gen Valorsuelo_e = Valorsuelo/100
 
 **MERGE CON INFO DEL PANEL DEL CEDE
 merge m:m Codigodane using "GRAL PANEL CEDE"
@@ -156,11 +157,11 @@ reg VIS10MIL proporcionareaexpansion
 estimates store modelo_1
 reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005
 estimates store modelo_2
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo 
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e 
 estimates store modelo_3
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor
 estimates store modelo_4
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor i.Aglo
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor i.Aglo
 estimates store modelo_5
 
 *Incluyendo EF por aglomeracion en todos 
@@ -168,9 +169,9 @@ reg VIS10MIL proporcionareaexpansion i.Aglo
 estimates store modelo_6
 reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 i.Aglo
 estimates store modelo_7
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo i.Aglo
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e i.Aglo
 estimates store modelo_8
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor i.Aglo
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor i.Aglo
 estimates store modelo_9
 
 **Doble selection lasso

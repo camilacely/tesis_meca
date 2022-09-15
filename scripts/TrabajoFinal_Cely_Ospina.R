@@ -41,8 +41,8 @@ p_load(tidyverse,    #Para limpiar los datos
 ##############################
 ## Directorio
 
-#setwd("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS")
-setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
+setwd("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS")
+#setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 
 
 ###############################
@@ -53,18 +53,17 @@ setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 
 # # input Stata file
 #library(haven)
-#BASE_TESIS_3107 <- read_dta("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS/BASE TESIS 3107.dta")
-# View(BASE_TESIS_3107)
+BASE_TESIS_1409 <- read_dta("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS/BASE TESIS 1409.dta")
+View(BASE_TESIS_1409)
 # 
 # 
-#export(BASE_TESIS_3107,"C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/stores/BASE_TESIS.rds")
-
+export(BASE_TESIS_1409,"C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/stores/BASE_TESIS2.rds")
 
 ###############################
 ###############################
 ## Importar la base final a R
 
-db <-readRDS("stores/BASE_TESIS.Rds") 
+db <-readRDS("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/stores/BASE_TESIS2.Rds") 
 summary (db)
 #no tenemos NA
 
@@ -959,6 +958,58 @@ via post-lasso ", "partial reg via double selection")
 tab_f = xtable(table_f, digits = c(2, 2, 5))
 tab_f
 
+############################################################################################################
+
+### G) CON LAS VARIABLES ACTUALIZADAS
+
+db_g <- select(filter(db),c(VIS10MIL, proporcionareaexpansion, IPM_urb, Defcuant2005, IndVIS, Valorsuelo, 
+                            A_Barranquilla, A_Bogota, A_Bucaramanga, A_Cali, A_Cartagena,  A_Medellin))
+
+cor(db_g)
+
+lapply(db_g, class)
+
+
+
+y_g <- db_g [,1, drop=F] #variable y de vis por cada 10mil habitantes
+d_g <- db_g [,2, drop=F] #variable "tratamiento" (aumento suelo expansion)
+x_g <- as.matrix(db_g)[,-c(1,2)] #matriz del resto de variables 
+
+varnames_g <- colnames(db_g)
+
+##
+# First:  Estimate by OLS
+xnames_g <- varnames_g [-c(1,2)]
+dandxnames_g <- varnames_g [-c(1)]
+
+fmla_g <- as.formula (paste ("VIS10MIL ~ ", paste(dandxnames_g, collapse= "+")))
+
+ls_effect_g <- lm (fmla_g, data = db_g)
+
+summary(ls_effect_g) 
+
+##
+# Second:  Estimate the effect by the partialling out by Post-Lasso
+lasso_effect_g <- rlassoEffect(x=x_g, y=y_g, d=d_g, method= "partialling out") 
+summary(lasso_effect_g)
+
+
+##
+# Third:  Estimate the effect by the double selection method
+doublesel_effect_g <- rlassoEffect(x=x_g, y=y_g, d=d_g, method= "double selection") 
+summary(doublesel_effect_g)
+
+
+##
+# Collect results
+
+table_g = rbind(summary(ls_effect_g)$coef["proporcionareaexpansion", 1:2], summary(lasso_effect_g)$coef[, 1:2], 
+                summary(doublesel_effect_g)$coef[, 1:2]) 
+colnames(table_g) = c("Estimate", "Std. Error") #names(summary(full.fit)£coef)[1:2]
+rownames(table_g) = c("full reg via ols", "partial reg
+via post-lasso ", "partial reg via double selection")
+tab_g = xtable(table_g, digits = c(2, 2, 5))
+tab_g
 
 
 #####################
