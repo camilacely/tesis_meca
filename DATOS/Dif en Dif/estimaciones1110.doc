@@ -1,0 +1,72 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx3024\clbrdrt\brdrs\cellx4320\clbrdrt\brdrs\cellx5616\clbrdrt\brdrs\cellx6912\clbrdrt\brdrs\cellx8496\clbrdrt\brdrs\cellx10080
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\qc (4)\cell\qc (5)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4320\cellx5616\cellx6912\cellx8496\cellx10080
+\ql \cell\qc modelo_1\cell\qc modelo_2\cell\qc modelo_3\cell\qc modelo_4\cell\qc modelo_5\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4320\cellx5616\cellx6912\cellx8496\cellx10080
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx3024\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx5616\clbrdrb\brdrs\cellx6912\clbrdrb\brdrs\cellx8496\clbrdrb\brdrs\cellx10080
+\ql VARIABLES\cell\qc deltaVIS\cell\qc deltaVIS\cell\qc deltaVIS\cell\qc deltaVIS\cell\qc deltaVIS\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4320\cellx5616\cellx6912\cellx8496\cellx10080
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Tratamiento1\cell\qc 392.2***\cell\qc 441.0***\cell\qc 408.3**\cell\qc 407.9**\cell\qc 350.4**\cell\row
+\ql \cell\qc (142.2)\cell\qc (144.5)\cell\qc (161.8)\cell\qc (164.8)\cell\qc (166.5)\cell\row
+\ql DeficitHabitacional0\cell\qc \cell\qc -1,737\cell\qc -1,562\cell\qc -1,583\cell\qc -774.7\cell\row
+\ql \cell\qc \cell\qc (1,261)\cell\qc (1,330)\cell\qc (1,376)\cell\qc (1,441)\cell\row
+\ql indiceHHI0\cell\qc \cell\qc \cell\qc 0.0109\cell\qc 0.0102\cell\qc 0.0211\cell\row
+\ql \cell\qc \cell\qc \cell\qc (0.0230)\cell\qc (0.0248)\cell\qc (0.0258)\cell\row
+\ql valorsuelourb0\cell\qc \cell\qc \cell\qc \cell\qc -2.29e-05\cell\qc 4.12e-05\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc (0.000269)\cell\qc (0.000275)\cell\row
+\ql Alineadoalc_con0\cell\qc \cell\qc \cell\qc \cell\qc \cell\qc 68.58\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc (157.0)\cell\row
+\ql Alineadoalc_nal0\cell\qc \cell\qc \cell\qc \cell\qc \cell\qc 263.1\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc (183.4)\cell\row
+\ql 2.dept1\cell\qc 23.33\cell\qc 27.39\cell\qc 54.53\cell\qc 60.93\cell\qc 85.37\cell\row
+\ql \cell\qc (250.3)\cell\qc (246.7)\cell\qc (256.4)\cell\qc (271.7)\cell\qc (274.7)\cell\row
+\ql 3.dept1\cell\qc 69.48\cell\qc 47.22\cell\qc 51.69\cell\qc 49.41\cell\qc 85.09\cell\row
+\ql \cell\qc (421.1)\cell\qc (415.2)\cell\qc (421.0)\cell\qc (429.5)\cell\qc (425.7)\cell\row
+\ql 4.dept1\cell\qc 4.404\cell\qc 614.1\cell\qc 547.8\cell\qc 555.2\cell\qc 292.6\cell\row
+\ql \cell\qc (317.2)\cell\qc (541.9)\cell\qc (566.7)\cell\qc (583.5)\cell\qc (600.0)\cell\row
+\ql 5.dept1\cell\qc -56.91\cell\qc -69.85\cell\qc -63.14\cell\qc -64.07\cell\qc -139.1\cell\row
+\ql \cell\qc (273.9)\cell\qc (270.1)\cell\qc (274.1)\cell\qc (279.3)\cell\qc (280.4)\cell\row
+\ql 6.dept1\cell\qc 87.11\cell\qc 17.09\cell\qc -31.09\cell\qc -30.40\cell\qc -361.0\cell\row
+\ql \cell\qc (421.1)\cell\qc (418.0)\cell\qc (435.6)\cell\qc (443.6)\cell\qc (480.3)\cell\row
+\ql 7.dept1\cell\qc 52.64\cell\qc 213.5\cell\qc 184.4\cell\qc 185.9\cell\qc 119.8\cell\row
+\ql \cell\qc (421.1)\cell\qc (431.0)\cell\qc (441.1)\cell\qc (449.5)\cell\qc (447.7)\cell\row
+\ql 8.dept1\cell\qc 123.8\cell\qc 559.4\cell\qc 459.3\cell\qc 466.8\cell\qc 229.9\cell\row
+\ql \cell\qc (421.1)\cell\qc (521.7)\cell\qc (569.1)\cell\qc (586.0)\cell\qc (599.4)\cell\row
+\ql 9.dept1\cell\qc 73.11\cell\qc 901.4\cell\qc 859.9\cell\qc 865.5\cell\qc 544.2\cell\row
+\ql \cell\qc (421.1)\cell\qc (730.7)\cell\qc (745.7)\cell\qc (762.2)\cell\qc (776.6)\cell\row
+\ql 10.dept1\cell\qc 500.8**\cell\qc 466.3**\cell\qc 469.1**\cell\qc 468.7**\cell\qc 322.7\cell\row
+\ql \cell\qc (209.5)\cell\qc (208.0)\cell\qc (210.9)\cell\qc (214.8)\cell\qc (229.9)\cell\row
+\ql 11.dept1\cell\qc 118.2\cell\qc 209.3\cell\qc 152.5\cell\qc 155.4\cell\qc -244.6\cell\row
+\ql \cell\qc (421.1)\cell\qc (420.1)\cell\qc (442.2)\cell\qc (451.6)\cell\qc (505.8)\cell\row
+\ql 12.dept1\cell\qc 41.33\cell\qc 772.0\cell\qc 698.2\cell\qc 705.5\cell\qc 387.5\cell\row
+\ql \cell\qc (421.1)\cell\qc (673.6)\cell\qc (700.1)\cell\qc (717.9)\cell\qc (734.9)\cell\row
+\ql 13.dept1\cell\qc 97.72\cell\qc 250.0\cell\qc 203.2\cell\qc 205.7\cell\qc -206.4\cell\row
+\ql \cell\qc (421.1)\cell\qc (429.4)\cell\qc (446.2)\cell\qc (455.2)\cell\qc (512.4)\cell\row
+\ql 14.dept1\cell\qc 127.8\cell\qc 418.9\cell\qc 363.1\cell\qc 366.6\cell\qc 158.9\cell\row
+\ql \cell\qc (421.1)\cell\qc (465.7)\cell\qc (486.3)\cell\qc (496.8)\cell\qc (514.3)\cell\row
+\ql 15.dept1\cell\qc 109.7\cell\qc 296.1\cell\qc 241.1\cell\qc 244.2\cell\qc -22.56\cell\row
+\ql \cell\qc (319.8)\cell\qc (343.0)\cell\qc (366.3)\cell\qc (374.8)\cell\qc (403.9)\cell\row
+\ql 16.dept1\cell\qc 139.1\cell\qc 128.1\cell\qc 112.4\cell\qc 112.7\cell\qc 52.28\cell\row
+\ql \cell\qc (421.1)\cell\qc (415.0)\cell\qc (421.9)\cell\qc (429.6)\cell\qc (437.1)\cell\row
+\ql 17.dept1\cell\qc 244.4\cell\qc 163.5\cell\qc 158.9\cell\qc 157.4\cell\qc 72.35\cell\row
+\ql \cell\qc (319.8)\cell\qc (320.6)\cell\qc (325.1)\cell\qc (331.4)\cell\qc (343.3)\cell\row
+\ql 18.dept1\cell\qc 3.233\cell\qc 93.79\cell\qc 97.69\cell\qc 100.9\cell\qc 56.83\cell\row
+\ql \cell\qc (235.3)\cell\qc (241.0)\cell\qc (244.4)\cell\qc (251.8)\cell\qc (249.8)\cell\row
+\ql 19.dept1\cell\qc 58.31\cell\qc 714.3\cell\qc 690.1\cell\qc 693.8\cell\qc 120.8\cell\row
+\ql \cell\qc (421.1)\cell\qc (631.7)\cell\qc (642.3)\cell\qc (655.4)\cell\qc (732.4)\cell\row
+\ql 20.dept1\cell\qc 184.0\cell\qc 236.1\cell\qc 207.7\cell\qc 208.9\cell\qc 113.2\cell\row
+\ql \cell\qc (421.1)\cell\qc (416.6)\cell\qc (426.5)\cell\qc (434.5)\cell\qc (443.2)\cell\row
+\ql 21.dept1\cell\qc 116.2\cell\qc 224.8\cell\qc 235.5\cell\qc 239.9\cell\qc 64.65\cell\row
+\ql \cell\qc (209.3)\cell\qc (220.8)\cell\qc (224.9)\cell\qc (234.8)\cell\qc (258.3)\cell\row
+\ql Constant\cell\qc -0.542\cell\qc 325.5\cell\qc 250.9\cell\qc 259.5\cell\qc 42.56\cell\row
+\ql \cell\qc (165.1)\cell\qc (287.2)\cell\qc (330.7)\cell\qc (351.7)\cell\qc (370.7)\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 52\cell\qc 52\cell\qc 52\cell\qc 52\cell\qc 52\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx3024\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx5616\clbrdrb\brdrs\cellx6912\clbrdrb\brdrs\cellx8496\clbrdrb\brdrs\cellx10080
+\ql R-squared\cell\qc 0.381\cell\qc 0.419\cell\qc 0.424\cell\qc 0.424\cell\qc 0.482\cell\row
+\pard\qc
+Standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}
