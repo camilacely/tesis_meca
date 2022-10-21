@@ -3701,5 +3701,1381 @@
 \row}
 
 
+{\fs20\b\qc\line Summary statistics:  mean sd min max  by(Tratamiento ) \line Tratamiento: 0 }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx2090
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3310
+\fs20\pard\intbl\qr {{ Mean}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4530
+\fs20\pard\intbl\qr {{ SD}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5750
+\fs20\pard\intbl\qr {{ Min}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6970
+\fs20\pard\intbl\qr {{ Max}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ VIS10MIL}}\cell
+\cellx3310
+\qr {{77.712}}\cell
+\cellx4530
+\qr {{287.468}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{2114.695}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitHabitacional}}\cell
+\cellx3310
+\qr {{.224}}\cell
+\cellx4530
+\qr {{.101}}\cell
+\cellx5750
+\qr {{0.134}}\cell
+\cellx6970
+\qr {{.6}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitCuantitativo}}\cell
+\cellx3310
+\qr {{.056}}\cell
+\cellx4530
+\qr {{.019}}\cell
+\cellx5750
+\qr {{0.033}}\cell
+\cellx6970
+\qr {{.114}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitCualitativo}}\cell
+\cellx3310
+\qr {{.177}}\cell
+\cellx4530
+\qr {{.091}}\cell
+\cellx5750
+\qr {{0.121}}\cell
+\cellx6970
+\qr {{.501}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ indiceHHI}}\cell
+\cellx3310
+\qr {{3566.477}}\cell
+\cellx4530
+\qr {{3478.567}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{10000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ valorsuelourb}}\cell
+\cellx3310
+\qr {{199151.62}}\cell
+\cellx4530
+\qr {{303886.33}}\cell
+\cellx5750
+\qr {{402.591}}\cell
+\cellx6970
+\qr {{1507523.1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Alineadoalc nal}}\cell
+\cellx3310
+\qr {{.306}}\cell
+\cellx4530
+\qr {{.465}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Mismoalc nal}}\cell
+\cellx3310
+\qr {{.161}}\cell
+\cellx4530
+\qr {{.371}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Alineadoalc con}}\cell
+\cellx3310
+\qr {{.5}}\cell
+\cellx4530
+\qr {{.504}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\clbrdrb\brdrw15\brdrs\cellx2090
+\fs20\pard\intbl\ql {{ Alineado3periodos}}\cell
+\clbrdrb\brdrw15\brdrs\cellx3310
+\qr {{.097}}\cell
+\clbrdrb\brdrw15\brdrs\cellx4530
+\qr {{.298}}\cell
+\clbrdrb\brdrw15\brdrs\cellx5750
+\qr {{0.000}}\cell
+\clbrdrb\brdrw15\brdrs\cellx6970
+\qr {{1}}\cell
+\row}
+
+
+{\fs20\b\qc\line 1 }{\par}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ VIS10MIL}}\cell
+\cellx3310
+\qr {{72.552}}\cell
+\cellx4530
+\qr {{103.283}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{305.475}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitHabitacional}}\cell
+\cellx3310
+\qr {{.249}}\cell
+\cellx4530
+\qr {{.145}}\cell
+\cellx5750
+\qr {{0.134}}\cell
+\cellx6970
+\qr {{.549}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitCuantitativo}}\cell
+\cellx3310
+\qr {{.062}}\cell
+\cellx4530
+\qr {{.029}}\cell
+\cellx5750
+\qr {{0.033}}\cell
+\cellx6970
+\qr {{.114}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitCualitativo}}\cell
+\cellx3310
+\qr {{.198}}\cell
+\cellx4530
+\qr {{.12}}\cell
+\cellx5750
+\qr {{0.121}}\cell
+\cellx6970
+\qr {{.434}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ indiceHHI}}\cell
+\cellx3310
+\qr {{3336.405}}\cell
+\cellx4530
+\qr {{3571.989}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{10000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ valorsuelourb}}\cell
+\cellx3310
+\qr {{206768.12}}\cell
+\cellx4530
+\qr {{170747.44}}\cell
+\cellx5750
+\qr {{14941.503}}\cell
+\cellx6970
+\qr {{569533.45}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Alineadoalc nal}}\cell
+\cellx3310
+\qr {{.294}}\cell
+\cellx4530
+\qr {{.47}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Mismoalc nal}}\cell
+\cellx3310
+\qr {{.118}}\cell
+\cellx4530
+\qr {{.332}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Alineadoalc con}}\cell
+\cellx3310
+\qr {{.588}}\cell
+\cellx4530
+\qr {{.507}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\clbrdrb\brdrw15\brdrs\cellx2090
+\fs20\pard\intbl\ql {{ Alineado3periodos}}\cell
+\clbrdrb\brdrw15\brdrs\cellx3310
+\qr {{.118}}\cell
+\clbrdrb\brdrw15\brdrs\cellx4530
+\qr {{.332}}\cell
+\clbrdrb\brdrw15\brdrs\cellx5750
+\qr {{0.000}}\cell
+\clbrdrb\brdrw15\brdrs\cellx6970
+\qr {{1}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3080
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4033
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4985
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5938
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6890
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7843
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8795
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9748
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3080
+\fs20\pard\intbl\ql {{ VIS10MIL by Tratam~1}}\cell
+\cellx4033
+\qr {{682}}\cell
+\cellx4985
+\qr {{187}}\cell
+\cellx5938
+\qr {{72.502}}\cell
+\cellx6890
+\qr {{116.108}}\cell
+\cellx7843
+\qr {{-43.605}}\cell
+\cellx8795
+\qr {{25.956}}\cell
+\cellx9748
+\qr {{-1.7}}\cell
+\cellx10700
+\qr {{.093}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4290
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5091
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5893
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6694
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7495
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8296
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9098
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9899
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx4290
+\fs20\pard\intbl\ql {{ DeficitHabitaciona~n}}\cell
+\cellx5091
+\qr {{682}}\cell
+\cellx5893
+\qr {{187}}\cell
+\cellx6694
+\qr {{0.212}}\cell
+\cellx7495
+\qr {{.227}}\cell
+\cellx8296
+\qr {{-.014}}\cell
+\cellx9098
+\qr {{.009}}\cell
+\cellx9899
+\qr {{-1.55}}\cell
+\cellx10700
+\qr {{.126}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4290
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5091
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5893
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6694
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7495
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8296
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9098
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9899
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx4290
+\fs20\pard\intbl\ql {{ DeficitCuantitativ~n}}\cell
+\cellx5091
+\qr {{682}}\cell
+\cellx5893
+\qr {{187}}\cell
+\cellx6694
+\qr {{0.051}}\cell
+\cellx7495
+\qr {{.053}}\cell
+\cellx8296
+\qr {{-.003}}\cell
+\cellx9098
+\qr {{.003}}\cell
+\cellx9899
+\qr {{-1.35}}\cell
+\cellx10700
+\qr {{.181}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4180
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4995
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5810
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6625
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7440
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8255
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9070
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9885
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx4180
+\fs20\pard\intbl\ql {{ DeficitCualitativo~t}}\cell
+\cellx4995
+\qr {{682}}\cell
+\cellx5810
+\qr {{187}}\cell
+\cellx6625
+\qr {{0.171}}\cell
+\cellx7440
+\qr {{.183}}\cell
+\cellx8255
+\qr {{-.013}}\cell
+\cellx9070
+\qr {{.007}}\cell
+\cellx9885
+\qr {{-1.7}}\cell
+\cellx10700
+\qr {{.088}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3190
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4129
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5068
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6006
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6945
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7884
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8823
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9761
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3190
+\fs20\pard\intbl\ql {{ indiceHHI by Trata~1}}\cell
+\cellx4129
+\qr {{682}}\cell
+\cellx5068
+\qr {{187}}\cell
+\cellx6006
+\qr {{3246.108}}\cell
+\cellx6945
+\qr {{3541.022}}\cell
+\cellx7884
+\qr {{-294.914}}\cell
+\cellx8823
+\qr {{303.418}}\cell
+\cellx9761
+\qr {{-.95}}\cell
+\cellx10700
+\qr {{.332}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3630
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4514
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5398
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6281
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7165
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8049
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8933
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9816
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3630
+\fs20\pard\intbl\ql {{ valorsuelourb by ~0 }}\cell
+\cellx4514
+\qr {{682}}\cell
+\cellx5398
+\qr {{187}}\cell
+\cellx6281
+\qr {{224797.397}}\cell
+\cellx7165
+\qr {{256469.53}}\cell
+\cellx8049
+\qr {{-31672.128}}\cell
+\cellx8933
+\qr {{26450.132}}\cell
+\cellx9816
+\qr {{-1.2}}\cell
+\cellx10700
+\qr {{.232}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3850
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4706
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5563
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6419
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7275
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8131
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8988
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9844
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3850
+\fs20\pard\intbl\ql {{ Alineadoalc nal by~ }}\cell
+\cellx4706
+\qr {{682}}\cell
+\cellx5563
+\qr {{187}}\cell
+\cellx6419
+\qr {{0.258}}\cell
+\cellx7275
+\qr {{.225}}\cell
+\cellx8131
+\qr {{.034}}\cell
+\cellx8988
+\qr {{.036}}\cell
+\cellx9844
+\qr {{.95}}\cell
+\cellx10700
+\qr {{.351}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3520
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4418
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5315
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6213
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7110
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8008
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8905
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9803
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3520
+\fs20\pard\intbl\ql {{ Mismoalc nal by Tr~1}}\cell
+\cellx4418
+\qr {{682}}\cell
+\cellx5315
+\qr {{187}}\cell
+\cellx6213
+\qr {{0.151}}\cell
+\cellx7110
+\qr {{.107}}\cell
+\cellx8008
+\qr {{.044}}\cell
+\cellx8905
+\qr {{.029}}\cell
+\cellx9803
+\qr {{1.55}}\cell
+\cellx10700
+\qr {{.126}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3850
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4706
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5563
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6419
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7275
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8131
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8988
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9844
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3850
+\fs20\pard\intbl\ql {{ Alineadoalc con by~ }}\cell
+\cellx4706
+\qr {{682}}\cell
+\cellx5563
+\qr {{187}}\cell
+\cellx6419
+\qr {{0.422}}\cell
+\cellx7275
+\qr {{.492}}\cell
+\cellx8131
+\qr {{-.07}}\cell
+\cellx8988
+\qr {{.041}}\cell
+\cellx9844
+\qr {{-1.7}}\cell
+\cellx10700
+\qr {{.089}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4070
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4899
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5728
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6556
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7385
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8214
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9043
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9871
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx4070
+\fs20\pard\intbl\ql {{ Alineado3periodos ~o}}\cell
+\cellx4899
+\qr {{682}}\cell
+\cellx5728
+\qr {{187}}\cell
+\cellx6556
+\qr {{0.097}}\cell
+\cellx7385
+\qr {{.118}}\cell
+\cellx8214
+\qr {{-.021}}\cell
+\cellx9043
+\qr {{.025}}\cell
+\cellx9871
+\qr {{-.85}}\cell
+\cellx10700
+\qr {{.403}}\cell
+\row}
+
+
+{\fs20\b\qc\line Summary statistics:  mean sd min max  by(Tratamiento ) \line Tratamiento: 0 }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx2090
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3310
+\fs20\pard\intbl\qr {{ Mean}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4530
+\fs20\pard\intbl\qr {{ SD}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5750
+\fs20\pard\intbl\qr {{ Min}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6970
+\fs20\pard\intbl\qr {{ Max}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ VIS10MIL}}\cell
+\cellx3310
+\qr {{77.436}}\cell
+\cellx4530
+\qr {{311.395}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{2319.79}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitHabitacional}}\cell
+\cellx3310
+\qr {{.224}}\cell
+\cellx4530
+\qr {{.101}}\cell
+\cellx5750
+\qr {{0.134}}\cell
+\cellx6970
+\qr {{.6}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitCuantitativo}}\cell
+\cellx3310
+\qr {{.056}}\cell
+\cellx4530
+\qr {{.019}}\cell
+\cellx5750
+\qr {{0.033}}\cell
+\cellx6970
+\qr {{.114}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitCualitativo}}\cell
+\cellx3310
+\qr {{.177}}\cell
+\cellx4530
+\qr {{.091}}\cell
+\cellx5750
+\qr {{0.121}}\cell
+\cellx6970
+\qr {{.501}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ indiceHHI}}\cell
+\cellx3310
+\qr {{3566.477}}\cell
+\cellx4530
+\qr {{3478.567}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{10000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ valorsuelourb}}\cell
+\cellx3310
+\qr {{199151.62}}\cell
+\cellx4530
+\qr {{303886.33}}\cell
+\cellx5750
+\qr {{402.591}}\cell
+\cellx6970
+\qr {{1507523.1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Alineadoalc nal}}\cell
+\cellx3310
+\qr {{.306}}\cell
+\cellx4530
+\qr {{.465}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Mismoalc nal}}\cell
+\cellx3310
+\qr {{.161}}\cell
+\cellx4530
+\qr {{.371}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Alineadoalc con}}\cell
+\cellx3310
+\qr {{.5}}\cell
+\cellx4530
+\qr {{.504}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\clbrdrb\brdrw15\brdrs\cellx2090
+\fs20\pard\intbl\ql {{ Alineado3periodos}}\cell
+\clbrdrb\brdrw15\brdrs\cellx3310
+\qr {{.097}}\cell
+\clbrdrb\brdrw15\brdrs\cellx4530
+\qr {{.298}}\cell
+\clbrdrb\brdrw15\brdrs\cellx5750
+\qr {{0.000}}\cell
+\clbrdrb\brdrw15\brdrs\cellx6970
+\qr {{1}}\cell
+\row}
+
+
+{\fs20\b\qc\line 1 }{\par}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ VIS10MIL}}\cell
+\cellx3310
+\qr {{54.887}}\cell
+\cellx4530
+\qr {{74.149}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{223.591}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitHabitacional}}\cell
+\cellx3310
+\qr {{.249}}\cell
+\cellx4530
+\qr {{.145}}\cell
+\cellx5750
+\qr {{0.134}}\cell
+\cellx6970
+\qr {{.549}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitCuantitativo}}\cell
+\cellx3310
+\qr {{.062}}\cell
+\cellx4530
+\qr {{.029}}\cell
+\cellx5750
+\qr {{0.033}}\cell
+\cellx6970
+\qr {{.114}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ DeficitCualitativo}}\cell
+\cellx3310
+\qr {{.198}}\cell
+\cellx4530
+\qr {{.12}}\cell
+\cellx5750
+\qr {{0.121}}\cell
+\cellx6970
+\qr {{.434}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ indiceHHI}}\cell
+\cellx3310
+\qr {{3336.405}}\cell
+\cellx4530
+\qr {{3571.989}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{10000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ valorsuelourb}}\cell
+\cellx3310
+\qr {{206768.12}}\cell
+\cellx4530
+\qr {{170747.44}}\cell
+\cellx5750
+\qr {{14941.503}}\cell
+\cellx6970
+\qr {{569533.45}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Alineadoalc nal}}\cell
+\cellx3310
+\qr {{.294}}\cell
+\cellx4530
+\qr {{.47}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Mismoalc nal}}\cell
+\cellx3310
+\qr {{.118}}\cell
+\cellx4530
+\qr {{.332}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx2090
+\fs20\pard\intbl\ql {{ Alineadoalc con}}\cell
+\cellx3310
+\qr {{.588}}\cell
+\cellx4530
+\qr {{.507}}\cell
+\cellx5750
+\qr {{0.000}}\cell
+\cellx6970
+\qr {{1}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\clbrdrb\brdrw15\brdrs\cellx2090
+\fs20\pard\intbl\ql {{ Alineado3periodos}}\cell
+\clbrdrb\brdrw15\brdrs\cellx3310
+\qr {{.118}}\cell
+\clbrdrb\brdrw15\brdrs\cellx4530
+\qr {{.332}}\cell
+\clbrdrb\brdrw15\brdrs\cellx5750
+\qr {{0.000}}\cell
+\clbrdrb\brdrw15\brdrs\cellx6970
+\qr {{1}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3080
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4033
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4985
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5938
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6890
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7843
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8795
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9748
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3080
+\fs20\pard\intbl\ql {{ VIS10MIL by Tratam~1}}\cell
+\cellx4033
+\qr {{496}}\cell
+\cellx4985
+\qr {{136}}\cell
+\cellx5938
+\qr {{51.541}}\cell
+\cellx6890
+\qr {{66.913}}\cell
+\cellx7843
+\qr {{-15.372}}\cell
+\cellx8795
+\qr {{26.301}}\cell
+\cellx9748
+\qr {{-.6}}\cell
+\cellx10700
+\qr {{.559}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4290
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5091
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5893
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6694
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7495
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8296
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9098
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9899
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx4290
+\fs20\pard\intbl\ql {{ DeficitHabitaciona~n}}\cell
+\cellx5091
+\qr {{496}}\cell
+\cellx5893
+\qr {{136}}\cell
+\cellx6694
+\qr {{0.227}}\cell
+\cellx7495
+\qr {{.241}}\cell
+\cellx8296
+\qr {{-.014}}\cell
+\cellx9098
+\qr {{.011}}\cell
+\cellx9899
+\qr {{-1.3}}\cell
+\cellx10700
+\qr {{.197}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4290
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5091
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5893
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6694
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7495
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8296
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9098
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9899
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx4290
+\fs20\pard\intbl\ql {{ DeficitCuantitativ~n}}\cell
+\cellx5091
+\qr {{496}}\cell
+\cellx5893
+\qr {{136}}\cell
+\cellx6694
+\qr {{0.056}}\cell
+\cellx7495
+\qr {{.06}}\cell
+\cellx8296
+\qr {{-.004}}\cell
+\cellx9098
+\qr {{.003}}\cell
+\cellx9899
+\qr {{-1.35}}\cell
+\cellx10700
+\qr {{.17}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4180
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4995
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5810
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6625
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7440
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8255
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9070
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9885
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx4180
+\fs20\pard\intbl\ql {{ DeficitCualitativo~t}}\cell
+\cellx4995
+\qr {{496}}\cell
+\cellx5810
+\qr {{136}}\cell
+\cellx6625
+\qr {{0.180}}\cell
+\cellx7440
+\qr {{.193}}\cell
+\cellx8255
+\qr {{-.013}}\cell
+\cellx9070
+\qr {{.009}}\cell
+\cellx9885
+\qr {{-1.35}}\cell
+\cellx10700
+\qr {{.178}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3190
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4129
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5068
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6006
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6945
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7884
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8823
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9761
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3190
+\fs20\pard\intbl\ql {{ indiceHHI by Trata~1}}\cell
+\cellx4129
+\qr {{496}}\cell
+\cellx5068
+\qr {{136}}\cell
+\cellx6006
+\qr {{3195.132}}\cell
+\cellx6945
+\qr {{3553.294}}\cell
+\cellx7884
+\qr {{-358.162}}\cell
+\cellx8823
+\qr {{373.928}}\cell
+\cellx9761
+\qr {{-.95}}\cell
+\cellx10700
+\qr {{.339}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3630
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4514
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5398
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6281
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7165
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8049
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8933
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9816
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3630
+\fs20\pard\intbl\ql {{ valorsuelourb by ~0 }}\cell
+\cellx4514
+\qr {{496}}\cell
+\cellx5398
+\qr {{136}}\cell
+\cellx6281
+\qr {{172666.231}}\cell
+\cellx7165
+\qr {{180689.8}}\cell
+\cellx8049
+\qr {{-8023.568}}\cell
+\cellx8933
+\qr {{24530.552}}\cell
+\cellx9816
+\qr {{-.35}}\cell
+\cellx10700
+\qr {{.744}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3850
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4706
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5563
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6419
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7275
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8131
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8988
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9844
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3850
+\fs20\pard\intbl\ql {{ Alineadoalc nal by~ }}\cell
+\cellx4706
+\qr {{496}}\cell
+\cellx5563
+\qr {{136}}\cell
+\cellx6419
+\qr {{0.306}}\cell
+\cellx7275
+\qr {{.265}}\cell
+\cellx8131
+\qr {{.042}}\cell
+\cellx8988
+\qr {{.044}}\cell
+\cellx9844
+\qr {{.95}}\cell
+\cellx10700
+\qr {{.346}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3520
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4418
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5315
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6213
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7110
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8008
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8905
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9803
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3520
+\fs20\pard\intbl\ql {{ Mismoalc nal by Tr~1}}\cell
+\cellx4418
+\qr {{496}}\cell
+\cellx5315
+\qr {{136}}\cell
+\cellx6213
+\qr {{0.202}}\cell
+\cellx7110
+\qr {{.147}}\cell
+\cellx8008
+\qr {{.054}}\cell
+\cellx8905
+\qr {{.038}}\cell
+\cellx9803
+\qr {{1.45}}\cell
+\cellx10700
+\qr {{.151}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3850
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4706
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5563
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6419
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7275
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8131
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8988
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9844
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx3850
+\fs20\pard\intbl\ql {{ Alineadoalc con by~ }}\cell
+\cellx4706
+\qr {{496}}\cell
+\cellx5563
+\qr {{136}}\cell
+\cellx6419
+\qr {{0.435}}\cell
+\cellx7275
+\qr {{.5}}\cell
+\cellx8131
+\qr {{-.065}}\cell
+\cellx8988
+\qr {{.048}}\cell
+\cellx9844
+\qr {{-1.35}}\cell
+\cellx10700
+\qr {{.181}}\cell
+\row}
+
+
+{\fs20\b\qc\line Two-sample t test with equal variances }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4070
+\fs20\pard\intbl\qr { }\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4899
+\fs20\pard\intbl\qr {{ obs1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5728
+\fs20\pard\intbl\qr {{ obs2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6556
+\fs20\pard\intbl\qr {{ Mean1 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7385
+\fs20\pard\intbl\qr {{ Mean2 }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8214
+\fs20\pard\intbl\qr {{ dif }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9043
+\fs20\pard\intbl\qr {{ St Err }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9871
+\fs20\pard\intbl\qr {{ t value }}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10700
+\fs20\pard\intbl\qr {{ p value}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx4070
+\fs20\pard\intbl\ql {{ Alineado3periodos ~o}}\cell
+\cellx4899
+\qr {{496}}\cell
+\cellx5728
+\qr {{136}}\cell
+\cellx6556
+\qr {{0.097}}\cell
+\cellx7385
+\qr {{.118}}\cell
+\cellx8214
+\qr {{-.021}}\cell
+\cellx9043
+\qr {{.029}}\cell
+\cellx9871
+\qr {{-.7}}\cell
+\cellx10700
+\qr {{.476}}\cell
+\row}
+
+
 \writepositionforappend
 }}
