@@ -7,10 +7,12 @@ clear
 clear all 
 
 *Establecer directorio
+
 cd "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\DATOS\Dif en Dif"
 
-use "BASE PARA DID"
+cd "C:\Users\Camila Cely\Documents\GitHub\tesis_meca\DATOS\Dif en Dif"
 
+use "BASE PARA DID"
 
 
 *************************************
@@ -206,4 +208,62 @@ reg deltaVIS Tratamiento1 DeficitCuantitativo1 i.eje1
 reg deltaVIS Tratamiento1 DeficitCuantitativo1 indiceHHI1 i.eje1
 reg deltaVIS Tratamiento1 DeficitCuantitativo1 indiceHHI1 valorsuelourb1 i.eje1
 reg deltaVIS Tratamiento1 DeficitCuantitativo1 indiceHHI1 valorsuelourb1 Alineadoalc_con1 i.eje1
+
+
+
+*************************************
+*EJERCICIO SABADO 22 DE OCTUBRE SEBASTIAN
+*************************************
+
+*Estimacion
+gen Post2015=0 if ano<2015
+replace Post2015=1 if ano>=2015 
+drop if ano>2018
+
+collapse (mean) DeficitHabitacional DeficitCuantitativo DeficitCualitativo Tratamiento Aglo indiceHHI valorsuelourb Alineadoalc_nal Mismoalc_nal Alineadoalc_con Alineado3periodos dept eje (sum) VIS10MIL, by (MUNICIPIO Post2015)
+
+reshape wide VIS DeficitHabitacional DeficitCuantitativo DeficitCualitativo Aglo indiceHHI valorsuelourb Alineadoalc_nal Mismoalc_nal Alineadoalc_con Alineado3periodos Tratamiento dept eje, i(MUNICIPIO) j(Post2015)
+
+gen deltaVIS=VIS10MIL1-VIS10MIL0
+
+reg deltaVIS Tratamiento1 DeficitHabitacional0 indiceHHI0 valorsuelourb0 Alineadoalc_con0 Alineadoalc_nal0, vce (cluster eje1) 
+
+
+
+*************************************
+*EJERCICIO SUGERENCIAS IGNACIO
+*************************************
+
+
+***********
+*Trends
+***********
+tab ano, gen(year)
+
+forvalues i=1(1)11{
+	loc j=2010+`i'
+	gen year_treat`j'=year`i'*Tratamiento
+}
+
+encode Aglomeración, generate(aglo)
+encode MUNICIPIO, generate(muni)
+
+generate newaglo = aglo
+
+xtset muni ano
+set seed 10101
+reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni)  cl(aglo)
+*bootstrap, reps(300) cl(aglo) idcl(newaglo) group(muni): reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni) 
+
+reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni ano##aglo)  cl(aglo)
+*Beware of bad controls
+reghdfe VIS10MIL year_treat2012-year_treat2021 DeficitCuantitativo indiceHHI  Alineadoalc_con , absorb(ano muni)  cl(aglo)
+reghdfe VIS10MIL year_treat2012-year_treat2021  DeficitHabitacional DeficitCuantitativo, absorb(ano muni ano##aglo)  cl(aglo)
+
+/*
+coefplot, vert drop(_cons)
+gen logcumvis=log(cum_vis +1)
+gen logcumvis=log(cum_vis +1)
+bysort muni (ano) : gen cum_vis = sum(VIS)*/
+
 
