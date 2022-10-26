@@ -10,10 +10,9 @@ clear all
 
 cd "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\DATOS\Dif en Dif"
 
-cd "C:\Users\Camila Cely\Documents\GitHub\tesis_meca\DATOS\Dif en Dif"
+*cd "C:\Users\Camila Cely\Documents\GitHub\tesis_meca\DATOS\Dif en Dif"
 
-use "BASE PARA DID"
-
+use "BASE 2009"
 
 *************************************
 *MODELO ORIGINAL
@@ -240,8 +239,8 @@ reg deltaVIS Tratamiento1 DeficitHabitacional0 indiceHHI0 valorsuelourb0 Alinead
 ***********
 tab ano, gen(year)
 
-forvalues i=1(1)11{
-	loc j=2010+`i'
+forvalues i=1(1)14{
+	loc j=2008+`i'
 	gen year_treat`j'=year`i'*Tratamiento
 }
 
@@ -249,21 +248,48 @@ encode Aglomeración, generate(aglo)
 encode MUNICIPIO, generate(muni)
 
 generate newaglo = aglo
+generate neweje=eje
 
 xtset muni ano
 set seed 10101
-reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni)  cl(aglo)
+reghdfe VIS10MIL year_treat2009-year_treat2021 , absorb(ano muni)  cl(aglo)
 *bootstrap, reps(300) cl(aglo) idcl(newaglo) group(muni): reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni) 
 
-reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni ano##aglo)  cl(aglo)
+reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni )  cl(aglo)
 *Beware of bad controls
-reghdfe VIS10MIL year_treat2012-year_treat2021 DeficitCuantitativo indiceHHI  Alineadoalc_con , absorb(ano muni)  cl(aglo)
-reghdfe VIS10MIL year_treat2012-year_treat2021  DeficitHabitacional DeficitCuantitativo, absorb(ano muni ano##aglo)  cl(aglo)
+*No tenemos deficit ni afiliacion politica desde 2009
+*reghdfe VIS10MIL year_treat2012-year_treat2021 DeficitCuantitativo indiceHHI  Alineadoalc_con , absorb(ano muni)  cl(aglo)
+*reghdfe VIS10MIL year_treat2012-year_treat2021  DeficitHabitacional DeficitCuantitativo, absorb(ano muni ano##aglo)  cl(aglo)
 
-/*
-coefplot, vert drop(_cons)
+*generar VIS acumuladas
+bysort muni (ano) : gen cum_vis = sum(VIS)
+bysort muni (ano) : gen cum_vis10 = sum(VIS10MIL)
+
+reghdfe VIS10MIL year_treat2009-year_treat2021 , absorb(ano muni )  cl(aglo)
+reghdfe cum_vis year_treat2009-year_treat2020 , absorb(ano muni )  cl(aglo)
+reghdfe cum_vis10 year_treat2009-year_treat2020 , absorb(ano muni )  cl(aglo)
+
+*generar el logaritmo de VIS acumuladas
 gen logcumvis=log(cum_vis +1)
-gen logcumvis=log(cum_vis +1)
-bysort muni (ano) : gen cum_vis = sum(VIS)*/
+gen logcumvis10=log(cum_vis10 +1)
 
+reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni ano##eje)  cl(aglo)
+reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni )  cl(aglo)
+reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni )  cl(eje)
+*El logaritmo funciona mucho mejor
 
+*Si quisieramos correrlo con eje tendriamos que correr bootstrap (menos de 30 clusters) pero tiene resultados similares a usar aglomeracion
+
+bootstrap, reps(300) cl(eje) idcl(neweje) group(muni): reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni) 
+
+reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni )  cl(aglo)
+
+*Gráfico tendencias paralelas
+coefplot, vert drop(_cons) yline(0)
+
+coefplot, keep(year*)vertical base mcolor("106 208 200") ciopts(lcolor("118 152 160")) ///
+	rename(year_treat2009="2009" year_treat2010="2010" year_treat2011="2011" year_treat2012="2012" year_treat2013=		"2013" year_treat2014="2014" year_treat2015="2015" year_treat2016="2016"year_treat2017="2017" year_treat2018=		"2018" year_treat2019="2019"year_treat2020="2020" year_treat2021="2021") ///
+	yline(0,lcolor("106 208 200") lpattern(dash)) xline(4 7, lcolor("236 196 77")) ///
+	graphregion(fcolor(white) ifcolor(white) ilcolor(white)) ///
+	xscale(lcolor("0 51 102")) yscale(lcolor("0 51 102")) ///
+	xlabel(, labcolor("0 51 102") noticks) ylabel(, labcolor("0 51 102") noticks nogrid)
