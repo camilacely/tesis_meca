@@ -281,7 +281,7 @@ reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni )  cl(eje)
 *Si quisieramos correrlo con eje tendriamos que correr bootstrap (menos de 30 clusters) pero tiene resultados similares a usar aglomeracion
 
 bootstrap, reps(300) cl(eje) idcl(neweje) group(muni): reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni) 
-
+*vs
 reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni )  cl(aglo)
 
 *Gráfico tendencias paralelas
