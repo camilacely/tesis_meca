@@ -1,0 +1,20 @@
+	(1)
+VARIABLES	deltaVIS
+	
+Tratamiento1	274.7
+	(164.6)
+DeficitHabitacional0	48.08
+	(499.5)
+DeficitCuantitativo0	-2,948
+	(2,284)
+indiceHHI0	0.0219
+	(0.0368)
+Alineadoalc_con0	94.85
+	(120.9)
+Constant	300.3*
+	(147.9)
+	
+Observations	79
+R-squared	0.087
+Robust standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

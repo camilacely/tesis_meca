@@ -5,7 +5,7 @@ clear all
 
 cd "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\DATOS\MCO"
 
-use "Aglo"
+use "BaseAglo"
 
 rename codigo_dane Codigodane
 
@@ -20,6 +20,7 @@ drop _merge
 merge m:m Codigodane using "VALORSUELO"
 drop if _merge!=3
 drop _merge
+gen Valorsuelo_e = Valorsuelo/100
 
 merge m:m Codigodane using "Deficit"
 drop if _merge!=3
@@ -47,10 +48,9 @@ encode Ejesregionales, gen(eje)
 
 gen POB10mil= pobl_urb/10000
 gen VIS10MIL= VIS/POB10mil
-gen indHHI=(HHI2013+HHI2020)/2
 
 ****Estadística descriptiva
-outreg2 using estdesc.doc, replace sum(log) keep(proporcionareaexpansion IPM_urb Defcuant2005 indHHI Valorsuelo)
+outreg2 using estdesc.doc, replace sum(log) keep(VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con)
 
 *****regresiones con VIS
 
@@ -58,11 +58,11 @@ reg VIS10MIL proporcionareaexpansion
 estimates store modelo_1
 reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005
 estimates store modelo_2
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 indHHI Valorsuelo 
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e 
 estimates store modelo_3
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 indHHI Valorsuelo ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con 
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con 
 estimates store modelo_4
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 indHHI Valorsuelo ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con i.Aglo
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con i.Aglo
 estimates store modelo_5
 
 *Incluyendo EF por aglomeracion en todos 
@@ -70,22 +70,27 @@ reg VIS10MIL proporcionareaexpansion i.Aglo
 estimates store modelo_6
 reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 i.Aglo
 estimates store modelo_7
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 indHHI Valorsuelo i.Aglo
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e i.Aglo
 estimates store modelo_8
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 indHHI Valorsuelo ULTIMOPOT MODEXCEPCIONAL i.Aglo
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL i.Aglo
 estimates store modelo_9
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 indHHI Valorsuelo ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con i.Aglo
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con i.Aglo
+estimates store modelo_10
 
 **Doble selection lasso
-dsregress VIS10MIL proporcionareaexpansion, controls(IPM_urb Defcuant2005 HHI2013 valorsuelourb ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor i.Aglo)
+dsregress VIS10MIL proporcionareaexpansion, controls(IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con i.Aglo) 
+estimates store modelo_11
 ereturn list
 
 reg VIS10MIL proporcionareaexpansion Defcuant2005
+estimates store modelo_12
 
 
+outreg2 [modelo_1 modelo_2 modelo_3 modelo_4 modelo_5] using "estimacionesMCO.doc", replace
 
+outreg2 [modelo_6 modelo_7 modelo_8 modelo_9 modelo_10] using "estimacionesMCO2.doc", replace
 
-
+outreg2 [modelo_11 modelo_12 modelo_10] using "doblelasso.doc", replace
 
 
 

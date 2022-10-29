@@ -101,6 +101,8 @@ reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni )  cl(eje)
 bootstrap, reps(300) cl(eje) idcl(neweje) group(muni): reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni) 
 *vs
 reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni )  cl(aglo)
+estimates store modelo_test
+outreg2 [modelo_test] using Tendparalelas.doc, replace
 
 
 *Gráfico tendencias paralelas

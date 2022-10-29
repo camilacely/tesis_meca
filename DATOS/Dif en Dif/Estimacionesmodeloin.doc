@@ -1,0 +1,28 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx3024\clbrdrt\brdrs\cellx4320
+\ql \cell\qc (1)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4320
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx3024\clbrdrb\brdrs\cellx4320
+\ql VARIABLES\cell\qc deltaVIS\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4320
+\ql \cell\qc \cell\row
+\ql Tratamiento1\cell\qc 274.7\cell\row
+\ql \cell\qc (164.6)\cell\row
+\ql DeficitHabitacional0\cell\qc 48.08\cell\row
+\ql \cell\qc (499.5)\cell\row
+\ql DeficitCuantitativo0\cell\qc -2,948\cell\row
+\ql \cell\qc (2,284)\cell\row
+\ql indiceHHI0\cell\qc 0.0219\cell\row
+\ql \cell\qc (0.0368)\cell\row
+\ql Alineadoalc_con0\cell\qc 94.85\cell\row
+\ql \cell\qc (120.9)\cell\row
+\ql Constant\cell\qc 300.3*\cell\row
+\ql \cell\qc (147.9)\cell\row
+\ql \cell\qc \cell\row
+\ql Observations\cell\qc 79\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx3024\clbrdrb\brdrs\cellx4320
+\ql R-squared\cell\qc 0.087\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}
