@@ -7,50 +7,76 @@ cd "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\DATOS\MC
 
 use "Aglo"
 
-*Construimos la base
-merge m:m MUNICIPIO DEPARTAMENTO using "MINVIVIENDA POR MUNICIPIO"
+rename codigo_dane Codigodane
+
+merge m:m Codigodane using "GRAL PANEL CEDE"
+drop if _merge!=3
 drop _merge
 
-rename codigo_dane Codigodane
+merge m:m Codigodane using "indHHI"
+drop if _merge!=3
+drop _merge
+
+merge m:m Codigodane using "Valor2"
+drop if _merge!=3
+drop _merge
 
 merge m:m Codigodane using "Deficit"
 drop if _merge!=3
 drop _merge
 
-merge m:m MUNICIPIO using "VIS"
-drop _merge
-drop if missing(Codigodane)
-
-merge m:m MUNICIPIO using "INDICE CONSTRUCTORES"
-label var ind1 "Índice constructores por municipio"
-drop if _merge==2
-drop _merge
-rename ind1 Indsub
-
-merge m:m MUNICIPIO using "indHHI"
-drop if _merge==2
-drop _merge
-
-rename Codigodane COD
-merge m:m COD using "Valor2"
+merge m:m Codigodane using "Afinidad"
 drop if _merge!=3
 drop _merge
 
-merge m:m Codigodane using "GRAL PANEL CEDE"
-drop if _merge==2
+merge m:m Codigodane using "AREAEXPANSION"
+drop if _merge!=3
 drop _merge
 
-*Solo tomamos municipios donde tenemos registros de VIS
-drop if VIS==0
-drop if VIS==.
+merge m:m Codigodane using "VIS"
+drop _merge
+drop if missing(Codigodane)
+drop if missing(pobl_urb)
 
+encode Aglomeración, gen(Aglo)
+encode Ejesregionales, gen(eje)
 
+gen POB10mil= pobl_urb/10000
+gen VIS10MIL= VIS/POB10mil
 
-*Creamos variables de subsidio MCY
-egen subtotal=rowtotal(HASTA2SMMLV SUPERIORESA2SMMLVYHASTA3S SUPERIORESA2SMMLVYHASTA4S SUPERIORESA3SMMLVYHASTA4S)
-egen subvis=rowtotal(SUPERIORESA3SMMLVYHASTA4S SUPERIORESA2SMMLVYHASTA4S SUPERIORESA2SMMLVYHASTA3S)
+****Estadística descriptiva
+outreg2 using estdesc.doc, replace sum(log) keep(proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo)
 
+outreg2 using estdescsub.doc, replace sum(log) keep(proporcionareaexpansion IPM_urb Defcuant2005 Indsub Valorsuelo)
 
+*****regresiones con VIS
+
+reg VIS10MIL proporcionareaexpansion
+estimates store modelo_1
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005
+estimates store modelo_2
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e 
+estimates store modelo_3
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor
+estimates store modelo_4
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor i.Aglo
+estimates store modelo_5
+
+*Incluyendo EF por aglomeracion en todos 
+reg VIS10MIL proporcionareaexpansion i.Aglo
+estimates store modelo_6
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 i.Aglo
+estimates store modelo_7
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e i.Aglo
+estimates store modelo_8
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 IndVIS Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor i.Aglo
+estimates store modelo_9
+
+**Doble selection lasso
+dsregress VIS10MIL proporcionareaexpansion, controls(IPM_urb Defcuant2005 IndVIS Valorsuelo ULTIMOPOT MODEXCEPCIONAL left_mayor right_mayor other_mayor unknown_mayor i.Aglo)
+ereturn list
+
+reg VIS10MIL proporcionareaexpansion Defcuant2005
 
 
 
