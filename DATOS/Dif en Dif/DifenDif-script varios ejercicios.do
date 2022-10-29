@@ -41,11 +41,13 @@ xtset cod ano
 
 *CON REGRESIONES NORMALES FUNCIONA UN POQUITO
 *Corremos regresion con efectos fijos por aglomeracion y año
-reghdfe VIS10MIL TratxPost2013 , absorb(ano Aglo)
+
+reghdfe VIS10MIL TratxPost2013 Post2013 Tratamiento, absorb(ano Aglo)
+
 reghdfe VIS10MIL TratxPost2013 DeficitCuantitativo , absorb(ano Aglo)
 reghdfe VIS10MIL TratxPost2013 DeficitCuantitativo indiceHHI , absorb(ano Aglo)
 reghdfe VIS10MIL TratxPost2013 DeficitCuantitativo indiceHHI valorsuelourb, absorb(ano Aglo)
-reghdfe VIS10MIL TratxPost2013 DeficitCuantitativo indiceHHI valorsuelourb Alineadoalc_con , absorb(ano Aglo) 
+reghdfe VIS10MIL TratxPost2013 Post2013 Tratamiento DeficitCuantitativo indiceHHI valorsuelourb Alineadoalc_con , absorb(ano Aglo) 
 
 *Con errores robustos por clusters no es significativo. Pero el indice HHI y el valor del suelo si continúan siendo significativos
 reghdfe VIS10MIL TratxPost2013 , absorb(ano Aglo) vce (cluster Aglo) 
@@ -94,7 +96,8 @@ sort ano Tratamiento
 
 gen TratxPost2015=Tratamiento*Post2015
 
-reghdfe VIS10MIL TratxPost2015 , absorb(ano Aglo)
+reghdfe VIS10MIL TratxPost2015 Post2015 Tratamiento, absorb(ano Aglo)
+
 reghdfe VIS10MIL TratxPost2015 DeficitCuantitativo , absorb(ano Aglo)
 reghdfe VIS10MIL TratxPost2015 DeficitCuantitativo indiceHHI , absorb(ano Aglo)
 reghdfe VIS10MIL TratxPost2015 DeficitCuantitativo indiceHHI valorsuelourb, absorb(ano Aglo)
@@ -225,8 +228,11 @@ reshape wide VIS DeficitHabitacional DeficitCuantitativo DeficitCualitativo Aglo
 
 gen deltaVIS=VIS10MIL1-VIS10MIL0
 
-reg deltaVIS Tratamiento1 DeficitHabitacional0 indiceHHI0 valorsuelourb0 Alineadoalc_con0 Alineadoalc_nal0, vce (cluster eje1) 
 
+reg deltaVIS Tratamiento1 DeficitHabitacional0 DeficitCuantitativo0 indiceHHI0 Alineadoalc_con0, vce (cluster Aglo1) 
+estimates store modelo_inicial
+
+outreg2 modelo_inicial using Estimacionesmodeloin.doc, replace 
 
 
 *************************************
@@ -259,6 +265,8 @@ generate neweje=eje
 xtset muni ano
 set seed 10101
 reghdfe VIS10MIL year_treat2009-year_treat2021 , absorb(ano muni)  cl(aglo)
+
+
 *bootstrap, reps(300) cl(aglo) idcl(newaglo) group(muni): reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni) 
 
 reghdfe VIS10MIL year_treat2012-year_treat2021 , absorb(ano muni )  cl(aglo)
@@ -294,20 +302,21 @@ reghdfe logcumvis10 year_treat2009-year_treat2021 , absorb(ano muni )  cl(aglo)
 *Gráfico tendencias paralelas
 coefplot, vert drop(_cons) yline(0)
 
-coefplot, keep(year*)vertical base mcolor("0 139 188") ciopts(lcolor("118 152 160")) ///
+coefplot, keep(year*)vertical base mcolor("0 111 150") ciopts(lcolor("118 152 160")) ///
 	rename(year_treat2009="2009" year_treat2010="2010" year_treat2011="2011" year_treat2012="2012" year_treat2013=		"2013" year_treat2014="2014" year_treat2015="2015" year_treat2016="2016"year_treat2017="2017" year_treat2018=		"2018" year_treat2019="2019"year_treat2020="2020" year_treat2021="2021") ///
-	yline(0,lcolor("0 139 188") lpattern(dash)) xline(4 7, lcolor("236 196 77")) ///
+	yline(0,lcolor("0 111 150") lpattern(dash)) xline(4 7, lcolor("255 191 128")) ///
 	graphregion(fcolor(white) ifcolor(white) ilcolor(white)) ///
 	xscale(lcolor("0 51 102")) yscale(lcolor("0 51 102")) ///
-	xlabel(, labcolor("0 51 102") noticks) ylabel(, labcolor("0 51 102") noticks nogrid)
+	xlabel(,  noticks) ylabel( ,noticks nogrid)
 	
-
 	
 *Corremos con controles 
 clear
 clear all 
 use "BASE PARA DID"
 tab ano, gen(year)
+
+
 
 forvalues i=1(1)11{
 	loc j=2010+`i'
@@ -326,7 +335,30 @@ set seed 10101
 bysort muni (ano) : gen cum_vis10 = sum(VIS10MIL)
 gen logcumvis10=log(cum_vis10 +1)
 
+*Estadistica descriptiva en la linea base
+asdoc tabstat logcumvis10  DeficitCuantitativo indiceHHI  Alineadoalc_con  if ano==2011, by(Tratamiento) stat(mean sd min max) replace
 
-reghdfe logcumvis10 year_treat2012-year_treat2021 DeficitHabitacional DeficitCuantitativo, absorb(ano muni )  cl(aglo)
-reghdfe logcumvis10 year_treat2011-year_treat2020 DeficitHabitacional DeficitCuantitativo, absorb(ano muni )  cl(aglo)
+*Prueba de medias
+foreach x in logcumvis10 DeficitHabitacional DeficitCuantitativo indiceHHI  Alineadoalc_con {
+
+	asdoc ttest `x', by(Tratamiento) 
+}
+
+*pruebas chi para las variables categoricas
+tab aglo Tratamiento if ano==2013, chi2 
+
+
+reghdfe logcumvis10 year_treat2012-year_treat2020  , absorb(ano muni)  cl(aglo)
+estimates store modelo_1 
+
+reghdfe logcumvis10 year_treat2012-year_treat2020 DeficitCuantitativo, absorb(ano muni )  cl(aglo)
+estimates store modelo_2
+
+reghdfe logcumvis10 year_treat2012-year_treat2020  DeficitCuantitativo indiceHHI , absorb(ano muni )  cl(aglo)
+estimates store modelo_3 
+
+reghdfe logcumvis10 year_treat2012-year_treat2020  DeficitCuantitativo indiceHHI  Alineadoalc_con  , absorb(ano muni )  cl(aglo)
+estimates store modelo_4
+
+outreg2 [modelo_1 modelo_2 modelo_3  modelo_4] using Estimacionesmodelo.doc, replace addtext (Year Fixed Effect, YES, Aglomeracion Fixed Effects, YES)
 
