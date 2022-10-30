@@ -4,6 +4,7 @@ clear
 clear all
 
 cd "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\DATOS\MCO"
+cd "C:\Users\Camila Cely\Documents\GitHub\tesis_meca\DATOS\MCO"
 
 use "BaseAglo"
 
@@ -48,6 +49,9 @@ encode Ejesregionales, gen(eje)
 
 gen POB10mil= pobl_urb/10000
 gen VIS10MIL= VIS/POB10mil
+
+*save MCOED.dta
+
 
 ****Estadística descriptiva
 outreg2 using estdesc.doc, replace sum(log) keep(VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con)
@@ -94,6 +98,9 @@ outreg2 [modelo_11 modelo_12 modelo_10] using "doblelasso.doc", replace
 
 
 
+** Creo que deberiamos poner en un apéndice la salida de la regresión completa pero con EF por eje
+
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con i.eje
 
 
 
