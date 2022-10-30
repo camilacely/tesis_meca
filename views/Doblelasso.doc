@@ -1,0 +1,96 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx3456\clbrdrt\brdrs\cellx4896\clbrdrt\brdrs\cellx6336\clbrdrt\brdrs\cellx7776
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3456\cellx4896\cellx6336\cellx7776
+\ql \cell\qc modelo_11\cell\qc modelo_12\cell\qc modelo_10\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3456\cellx4896\cellx6336\cellx7776
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx3456\clbrdrb\brdrs\cellx4896\clbrdrb\brdrs\cellx6336\clbrdrb\brdrs\cellx7776
+\ql VARIABLES\cell\qc VIS10MIL\cell\qc VIS10MIL\cell\qc VIS10MIL\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3456\cellx4896\cellx6336\cellx7776
+\ql \cell\qc \cell\qc \cell\qc \cell\row
+\ql proporcionareaexpansion\cell\qc 950.2*\cell\qc 972.8***\cell\qc 1,479**\cell\row
+\ql \cell\qc (538.1)\cell\qc (253.0)\cell\qc (660.2)\cell\row
+\ql IPM_urb\cell\qc \cell\qc \cell\qc -29.57\cell\row
+\ql \cell\qc \cell\qc \cell\qc (25.32)\cell\row
+\ql Defcuant2005\cell\qc \cell\qc 3,607***\cell\qc 4,550\cell\row
+\ql \cell\qc \cell\qc (1,273)\cell\qc (2,577)\cell\row
+\ql HHI2013\cell\qc \cell\qc \cell\qc 0.0264\cell\row
+\ql \cell\qc \cell\qc \cell\qc (0.0483)\cell\row
+\ql Valorsuelo_e\cell\qc \cell\qc \cell\qc 0.0124\cell\row
+\ql \cell\qc \cell\qc \cell\qc (0.0687)\cell\row
+\ql ULT_POT\cell\qc \cell\qc \cell\qc -19.16\cell\row
+\ql \cell\qc \cell\qc \cell\qc (33.55)\cell\row
+\ql MODEXCEPCIONAL\cell\qc \cell\qc \cell\qc 303.8\cell\row
+\ql \cell\qc \cell\qc \cell\qc (457.2)\cell\row
+\ql Alineadoalc_con\cell\qc \cell\qc \cell\qc 131.9\cell\row
+\ql \cell\qc \cell\qc \cell\qc (465.5)\cell\row
+\ql 2.Aglo\cell\qc \cell\qc \cell\qc 1,631\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,422)\cell\row
+\ql 3.Aglo\cell\qc \cell\qc \cell\qc 1,974\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,455)\cell\row
+\ql 4.Aglo\cell\qc \cell\qc \cell\qc 1,553\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,096)\cell\row
+\ql 5.Aglo\cell\qc \cell\qc \cell\qc 836.2\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,159)\cell\row
+\ql 6.Aglo\cell\qc \cell\qc \cell\qc 800.9\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,129)\cell\row
+\ql 7.Aglo\cell\qc \cell\qc \cell\qc 1,929\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,708)\cell\row
+\ql 8.Aglo\cell\qc \cell\qc \cell\qc 1,474\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,226)\cell\row
+\ql 9.Aglo\cell\qc \cell\qc \cell\qc 1,598\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,401)\cell\row
+\ql 10.Aglo\cell\qc \cell\qc \cell\qc 613.3\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,440)\cell\row
+\ql 11.Aglo\cell\qc \cell\qc \cell\qc 1,894\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,201)\cell\row
+\ql 12.Aglo\cell\qc \cell\qc \cell\qc 1,110\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,497)\cell\row
+\ql 13.Aglo\cell\qc \cell\qc \cell\qc 1,308\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,469)\cell\row
+\ql 14.Aglo\cell\qc \cell\qc \cell\qc 1,364\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,332)\cell\row
+\ql 15.Aglo\cell\qc \cell\qc \cell\qc 768.0\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,513)\cell\row
+\ql 16.Aglo\cell\qc \cell\qc \cell\qc 1,293\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,371)\cell\row
+\ql 17.Aglo\cell\qc \cell\qc \cell\qc 1,449\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,460)\cell\row
+\ql 18.Aglo\cell\qc \cell\qc \cell\qc 1,115\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,287)\cell\row
+\ql 19.Aglo\cell\qc \cell\qc \cell\qc 2,332\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,443)\cell\row
+\ql 20.Aglo\cell\qc \cell\qc \cell\qc 1,282\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,391)\cell\row
+\ql 21.Aglo\cell\qc \cell\qc \cell\qc 1,357\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,374)\cell\row
+\ql 22.Aglo\cell\qc \cell\qc \cell\qc 1,494\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,251)\cell\row
+\ql 23.Aglo\cell\qc \cell\qc \cell\qc 1,109\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,421)\cell\row
+\ql 24.Aglo\cell\qc \cell\qc \cell\qc 482.7\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,579)\cell\row
+\ql 25.Aglo\cell\qc \cell\qc \cell\qc 1,475\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,299)\cell\row
+\ql 26.Aglo\cell\qc \cell\qc \cell\qc 1,835\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,478)\cell\row
+\ql 27.Aglo\cell\qc \cell\qc \cell\qc 1,398\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,526)\cell\row
+\ql 28.Aglo\cell\qc \cell\qc \cell\qc 1,421\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,433)\cell\row
+\ql 29.Aglo\cell\qc \cell\qc \cell\qc 929.7\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,513)\cell\row
+\ql 30.Aglo\cell\qc \cell\qc \cell\qc 1,968\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,320)\cell\row
+\ql 31.Aglo\cell\qc \cell\qc \cell\qc 570.4\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1,352)\cell\row
+\ql Constant\cell\qc \cell\qc -255.1\cell\qc 37,498\cell\row
+\ql \cell\qc \cell\qc (175.7)\cell\qc (67,236)\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 52\cell\qc 52\cell\qc 52\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx3456\clbrdrb\brdrs\cellx4896\clbrdrb\brdrs\cellx6336\clbrdrb\brdrs\cellx7776
+\ql R-squared\cell\qc \cell\qc 0.391\cell\qc 0.701\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}

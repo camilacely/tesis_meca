@@ -1,0 +1,32 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx3024\clbrdrt\brdrs\cellx4464\clbrdrt\brdrs\cellx5904\clbrdrt\brdrs\cellx7488\clbrdrt\brdrs\cellx9072
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\qc (4)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4464\cellx5904\cellx7488\cellx9072
+\ql \cell\qc modelo_i1\cell\qc modelo_i2\cell\qc modelo_i3\cell\qc modelo_i4\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4464\cellx5904\cellx7488\cellx9072
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx3024\clbrdrb\brdrs\cellx4464\clbrdrb\brdrs\cellx5904\clbrdrb\brdrs\cellx7488\clbrdrb\brdrs\cellx9072
+\ql VARIABLES\cell\qc deltaVIS\cell\qc deltaVIS\cell\qc deltaVIS\cell\qc deltaVIS\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4464\cellx5904\cellx7488\cellx9072
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Tratamiento1\cell\qc 268.5\cell\qc 288.5*\cell\qc 288.5*\cell\qc 280.4*\cell\row
+\ql \cell\qc (175.1)\cell\qc (164.8)\cell\qc (164.0)\cell\qc (163.2)\cell\row
+\ql DeficitHabitacional0\cell\qc \cell\qc 97.27\cell\qc 170.2\cell\qc 143.1\cell\row
+\ql \cell\qc \cell\qc (482.3)\cell\qc (536.5)\cell\qc (550.1)\cell\row
+\ql DeficitCuantitativo0\cell\qc \cell\qc -3,184\cell\qc -3,333\cell\qc -3,152\cell\row
+\ql \cell\qc \cell\qc (2,232)\cell\qc (2,404)\cell\qc (2,452)\cell\row
+\ql indiceHHI0\cell\qc \cell\qc \cell\qc 0.0356\cell\qc 0.0309\cell\row
+\ql \cell\qc \cell\qc \cell\qc (0.0434)\cell\qc (0.0389)\cell\row
+\ql valorsuelourb0\cell\qc \cell\qc \cell\qc 0.000397\cell\qc 0.000406\cell\row
+\ql \cell\qc \cell\qc \cell\qc (0.000484)\cell\qc (0.000488)\cell\row
+\ql Alineadoalc_con0\cell\qc \cell\qc \cell\qc \cell\qc 99.17\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc (125.6)\cell\row
+\ql Constant\cell\qc 213.3***\cell\qc 391.7***\cell\qc 246.1**\cell\qc 216.3\cell\row
+\ql \cell\qc (59.35)\cell\qc (112.4)\cell\qc (103.9)\cell\qc (134.9)\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 79\cell\qc 79\cell\qc 79\cell\qc 79\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx3024\clbrdrb\brdrs\cellx4464\clbrdrb\brdrs\cellx5904\clbrdrb\brdrs\cellx7488\clbrdrb\brdrs\cellx9072
+\ql R-squared\cell\qc 0.043\cell\qc 0.067\cell\qc 0.093\cell\qc 0.101\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}

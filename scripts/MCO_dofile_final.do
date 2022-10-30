@@ -3,8 +3,8 @@
 clear
 clear all
 
-cd "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\DATOS\MCO"
-cd "C:\Users\Camila Cely\Documents\GitHub\tesis_meca\DATOS\MCO"
+cd "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\stores\MCO - Stata"
+*cd "C:\Users\Camila Cely\Documents\GitHub\tesis_meca\stores\MCO - Stata"
 
 use "BaseAglo"
 
@@ -54,7 +54,9 @@ gen VIS10MIL= VIS/POB10mil
 
 
 ****Estadística descriptiva
-outreg2 using estdesc.doc, replace sum(log) keep(VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con)
+outreg2 using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstDescriptivaMCO.doc", replace sum(log) keep(VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con)
+erase "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstDescriptivaMCO.txt"
+
 
 *****regresiones con VIS
 
@@ -64,9 +66,9 @@ reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005
 estimates store modelo_2
 reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e 
 estimates store modelo_3
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con 
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con 
 estimates store modelo_4
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULTIMOPOT MODEXCEPCIONAL Alineadoalc_con i.Aglo
+reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con i.Aglo
 estimates store modelo_5
 
 *Incluyendo EF por aglomeracion en todos 
@@ -90,17 +92,17 @@ reg VIS10MIL proporcionareaexpansion Defcuant2005
 estimates store modelo_12
 
 
-outreg2 [modelo_1 modelo_2 modelo_3 modelo_4 modelo_5] using "estimacionesMCO.doc", replace
-
-outreg2 [modelo_6 modelo_7 modelo_8 modelo_9 modelo_10] using "estimacionesMCO2.doc", replace
-
-outreg2 [modelo_11 modelo_12 modelo_10] using "doblelasso.doc", replace
+outreg2 [modelo_1 modelo_2 modelo_3 modelo_4 modelo_5] using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO.doc", replace
+erase "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO.txt"
 
 
+outreg2 [modelo_6 modelo_7 modelo_8 modelo_9 modelo_10] using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO2.doc", replace
+erase "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO2.txt"
 
-** Creo que deberiamos poner en un apéndice la salida de la regresión completa pero con EF por eje
+outreg2 [modelo_11 modelo_12 modelo_10] using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\Doblelasso.doc", replace
+erase "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\Doblelasso.txt"
 
-reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con i.eje
+
 
 
 

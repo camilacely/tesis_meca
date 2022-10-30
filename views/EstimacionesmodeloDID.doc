@@ -1,0 +1,46 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx3888\clbrdrt\brdrs\cellx5616\clbrdrt\brdrs\cellx7344\clbrdrt\brdrs\cellx9072\clbrdrt\brdrs\cellx10800
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\qc (4)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3888\cellx5616\cellx7344\cellx9072\cellx10800
+\ql \cell\qc modelo_1\cell\qc modelo_2\cell\qc modelo_3\cell\qc modelo_4\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3888\cellx5616\cellx7344\cellx9072\cellx10800
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx3888\clbrdrb\brdrs\cellx5616\clbrdrb\brdrs\cellx7344\clbrdrb\brdrs\cellx9072\clbrdrb\brdrs\cellx10800
+\ql VARIABLES\cell\qc logcumvis10\cell\qc logcumvis10\cell\qc logcumvis10\cell\qc logcumvis10\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3888\cellx5616\cellx7344\cellx9072\cellx10800
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql year_treat2012\cell\qc -0.000180\cell\qc -0.0174\cell\qc -0.0237\cell\qc -0.0246\cell\row
+\ql \cell\qc (0.359)\cell\qc (0.370)\cell\qc (0.315)\cell\qc (0.313)\cell\row
+\ql year_treat2013\cell\qc 0.0646\cell\qc 0.0279\cell\qc 0.0659\cell\qc 0.0649\cell\row
+\ql \cell\qc (0.408)\cell\qc (0.402)\cell\qc (0.366)\cell\qc (0.365)\cell\row
+\ql year_treat2014\cell\qc 0.254\cell\qc 0.231\cell\qc 0.202\cell\qc 0.201\cell\row
+\ql \cell\qc (0.303)\cell\qc (0.312)\cell\qc (0.251)\cell\qc (0.249)\cell\row
+\ql year_treat2015\cell\qc 0.371\cell\qc 0.349\cell\qc 0.447\cell\qc 0.446\cell\row
+\ql \cell\qc (0.354)\cell\qc (0.363)\cell\qc (0.298)\cell\qc (0.295)\cell\row
+\ql year_treat2016\cell\qc 0.692**\cell\qc 0.686**\cell\qc 0.654**\cell\qc 0.652**\cell\row
+\ql \cell\qc (0.298)\cell\qc (0.293)\cell\qc (0.316)\cell\qc (0.316)\cell\row
+\ql year_treat2017\cell\qc 0.681***\cell\qc 0.666***\cell\qc 0.667***\cell\qc 0.665***\cell\row
+\ql \cell\qc (0.185)\cell\qc (0.178)\cell\qc (0.225)\cell\qc (0.226)\cell\row
+\ql year_treat2018\cell\qc 0.440*\cell\qc 0.435*\cell\qc 0.481**\cell\qc 0.480**\cell\row
+\ql \cell\qc (0.223)\cell\qc (0.214)\cell\qc (0.195)\cell\qc (0.195)\cell\row
+\ql year_treat2019\cell\qc 0.292\cell\qc 0.296\cell\qc 0.359\cell\qc 0.361\cell\row
+\ql \cell\qc (0.234)\cell\qc (0.222)\cell\qc (0.227)\cell\qc (0.225)\cell\row
+\ql year_treat2020\cell\qc 0.214\cell\qc 0.218\cell\qc 0.290\cell\qc 0.292\cell\row
+\ql \cell\qc (0.260)\cell\qc (0.250)\cell\qc (0.224)\cell\qc (0.222)\cell\row
+\ql DeficitCuantitativo\cell\qc \cell\qc 4.579\cell\qc 3.197\cell\qc 3.267\cell\row
+\ql \cell\qc \cell\qc (5.129)\cell\qc (5.019)\cell\qc (4.971)\cell\row
+\ql indiceHHI\cell\qc \cell\qc \cell\qc 0.000103***\cell\qc 0.000103***\cell\row
+\ql \cell\qc \cell\qc \cell\qc (1.31e-05)\cell\qc (1.27e-05)\cell\row
+\ql Alineadoalc_con\cell\qc \cell\qc \cell\qc \cell\qc -0.0325\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc (0.148)\cell\row
+\ql Constant\cell\qc 3.171***\cell\qc 2.939***\cell\qc 2.665***\cell\qc 2.674***\cell\row
+\ql \cell\qc (0.0335)\cell\qc (0.267)\cell\qc (0.256)\cell\qc (0.263)\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 869\cell\qc 869\cell\qc 869\cell\qc 869\cell\row
+\ql R-squared\cell\qc 0.851\cell\qc 0.852\cell\qc 0.870\cell\qc 0.870\cell\row
+\ql Year Fixed Effect\cell\qc YES\cell\qc YES\cell\qc YES\cell\qc YES\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx3888\clbrdrb\brdrs\cellx5616\clbrdrb\brdrs\cellx7344\clbrdrb\brdrs\cellx9072\clbrdrb\brdrs\cellx10800
+\ql Aglomeracion Fixed Effects\cell\qc YES\cell\qc YES\cell\qc YES\cell\qc YES\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}
