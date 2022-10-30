@@ -1,0 +1,466 @@
+# estadisticas descriptivas capitulo datos - tesis meca
+# maria camila cely moreno - sara ospina giraldo
+
+library(haven)
+library(ggplot2)
+library(ggpubr)
+
+data <- read_dta('C:/Users/Camila Cely/Documents/GitHub/tesis_meca/DATOS/MCO/MCOED.dta')
+
+
+####################################################
+####################################################
+# PARA FIGURA 1,  ANALISIS DE CORRELACIONES
+####################################################
+
+ggscatter(data, x = "Defhab2005", y = "VIS10MIL", 
+           add = "reg.line", conf.int = TRUE, 
+           cor.coef = TRUE, cor.method = "pearson",
+           xlab = "Déf. Habitacional", ylab = "N° VIS por cada 10.000 hab")
+
+
+ggscatter(data, x = "IPM_urb", y = "VIS10MIL", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Índice de Pobreza Multidimensional Urbano", ylab = "N° VIS por cada 10.000 hab")
+
+
+ggscatter(data, x = "Valorsuelo", y = "VIS10MIL", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Valor del suelo", ylab = "N° VIS por cada 10.000 hab")
+
+ggscatter(data, x = "proporcionareaexpansion", y = "VIS10MIL", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Proporción suelo de expansión habilitado", ylab = "N° VIS por cada 10.000 hab")
+
+
+####################################################
+####################################################
+# PARA FIGURA 2,  BARPLOT DE TODAS LAS AGLOMERACIONES
+####################################################
+
+
+db <- data
+
+bar_plot <- ggplot(data=db , mapping = aes(Aglomeración , proporcionareaexpansion)) + 
+  geom_bar(stat = "identity")
+
+bar_plot + coord_flip() + 
+  xlab("Aglomeración") + 
+  ylab("Proporción suelo habilitado") 
+
+
+bar_plot2 <- ggplot(data=db , mapping = aes(Aglomeración , VIS10MIL)) + 
+  geom_bar(stat = "identity")
+
+bar_plot2 + coord_flip() + 
+  xlab("Aglomeración") + 
+  ylab("N° VIS cada 10mil hab") 
+
+
+####################################################
+####################################################
+# PARA FIGURA 3 Y APÉNDICE D, BARPLOT POR AGLOMERACIÓN
+####################################################
+
+
+############################### CALI
+
+data_cali <- data
+data_cali <- subset (data_cali, Aglo == 8)
+
+####  deficit cuantitativo
+
+cali_def <- subset(data_cali,select = c('Municipio','Defcuant2005'))
+
+ggp_def <- ggplot(cali_def, aes(Municipio, Defcuant2005)) +        
+  geom_bar(stat = "identity")
+
+ggp_def + xlab("Municipio") + ylab("Déf. Cuantitativo 2005") 
+
+# ggp + ylim (0, 0.20) #esto sirve para ampliar o disminuir los valores en y
+
+####  valor del suelo
+
+cali_val <- subset(data_cali,select = c('Municipio','Valorsuelo'))
+
+cali_val <- ggplot(cali_val, aes(Municipio, Valorsuelo)) +        
+  geom_bar(stat = "identity")
+
+cali_val + xlab("Municipio") + ylab("Valor suelo urbano")
+
+####  vis10mil
+
+cali_vis <- subset(data_cali,select = c('Municipio','VIS10MIL'))
+
+cali_vis <- ggplot(cali_vis, aes(Municipio, VIS10MIL)) +        
+  geom_bar(stat = "identity")
+
+cali_vis + xlab("Municipio") + ylab("N° VIS cada 10mil hab") 
+
+####  proporcion suelo de expansion
+
+cali_prop <- subset(data_cali,select = c('Municipio','proporcionareaexpansion'))
+
+cali_prop <- ggplot(cali_prop, aes(Municipio, proporcionareaexpansion)) +        
+  geom_bar(stat = "identity")
+
+cali_prop + xlab("Municipio") + ylab("Proporción suelo habilitado")
+
+
+
+############################### BOGOTA
+
+data_bog <- data
+data_bog <- subset (data_bog, Aglo == 5)
+
+####  deficit cuantitativo
+
+bog_def <- subset(data_bog,select = c('Municipio','Defcuant2005'))
+
+ggp_def <- ggplot(bog_def, aes(Municipio, Defcuant2005)) +        
+  geom_bar(stat = "identity")
+
+ggp_def + xlab("Municipio") + ylab("Déf. Cuantitativo 2005") 
+
+####  valor del suelo
+
+bog_val <- subset(data_bog,select = c('Municipio','Valorsuelo'))
+
+bog_val <- ggplot(bog_val, aes(Municipio, Valorsuelo)) +        
+  geom_bar(stat = "identity")
+
+bog_val + xlab("Municipio") + ylab("Valor suelo urbano")
+
+
+####  proporcion suelo de expansion
+
+bog_prop <- subset(data_bog,select = c('Municipio','proporcionareaexpansion'))
+
+bog_prop <- ggplot(bog_prop, aes(Municipio, proporcionareaexpansion)) +        
+  geom_bar(stat = "identity")
+
+bog_prop + xlab("Municipio") + ylab("Proporción suelo habilitado")
+
+####  vis10mil
+
+bog_vis <- subset(data_bog,select = c('Municipio','VIS10MIL'))
+
+bog_vis <- ggplot(bog_vis, aes(Municipio, VIS10MIL)) +        
+  geom_bar(stat = "identity")
+
+bog_vis + xlab("Municipio") + ylab("N° VIS cada 10mil hab") 
+
+
+############################### MEDELLIN
+
+data_med <- data
+data_med <- subset (data_med, Aglo == 18)
+
+####  deficit cuantitativo
+
+med_def <- subset(data_med,select = c('Municipio','Defcuant2005'))
+
+ggp_def <- ggplot(med_def, aes(Municipio, Defcuant2005)) +        
+  geom_bar(stat = "identity")
+
+ggp_def + xlab("Municipio") + ylab("Déf. Cuantitativo 2005") 
+
+####  valor del suelo
+
+med_val <- subset(data_med,select = c('Municipio','Valorsuelo'))
+
+med_val <- ggplot(med_val, aes(Municipio, Valorsuelo)) +        
+  geom_bar(stat = "identity")
+
+med_val + xlab("Municipio") + ylab("Valor suelo urbano")
+
+
+####  proporcion suelo de expansion
+
+med_prop <- subset(data_med,select = c('Municipio','proporcionareaexpansion'))
+
+med_prop <- ggplot(med_prop, aes(Municipio, proporcionareaexpansion)) +        
+  geom_bar(stat = "identity")
+
+med_prop + xlab("Municipio") + ylab("Proporción suelo habilitado")
+
+####  vis10mil
+
+med_vis <- subset(data_med,select = c('Municipio','VIS10MIL'))
+
+med_vis <- ggplot(med_vis, aes(Municipio, VIS10MIL)) +        
+  geom_bar(stat = "identity")
+
+med_vis + xlab("Municipio") + ylab("N° VIS cada 10mil hab") 
+
+
+
+############################### BARRANQUILLA
+
+data_bar <- data
+data_bar <- subset (data_bar, Aglo == 4)
+
+####  deficit cuantitativo
+
+bar_def <- subset(data_bar,select = c('Municipio','Defcuant2005'))
+
+bar_def <- ggplot(bar_def, aes(Municipio, Defcuant2005)) +        
+  geom_bar(stat = "identity")
+
+bar_def + xlab("Municipio") + ylab("Déf. Cuantitativo 2005") 
+
+####  valor del suelo
+
+bar_val <- subset(data_bar,select = c('Municipio','Valorsuelo'))
+
+bar_val <- ggplot(bar_val, aes(Municipio, Valorsuelo)) +        
+  geom_bar(stat = "identity")
+
+bar_val + xlab("Municipio") + ylab("Valor suelo urbano")
+
+
+####  proporcion suelo de expansion
+
+bar_prop <- subset(data_bar,select = c('Municipio','proporcionareaexpansion'))
+
+bar_prop <- ggplot(bar_prop, aes(Municipio, proporcionareaexpansion)) +        
+  geom_bar(stat = "identity")
+
+bar_prop + xlab("Municipio") + ylab("Proporción suelo habilitado")
+
+####  vis10mil
+
+bar_vis <- subset(data_bar,select = c('Municipio','VIS10MIL'))
+
+bar_vis <- ggplot(bar_vis, aes(Municipio, VIS10MIL)) +        
+  geom_bar(stat = "identity")
+
+bar_vis + xlab("Municipio") + ylab("N° VIS cada 10mil hab") 
+
+
+
+############################### BUCARAMANGA
+
+data_buc <- data
+data_buc <- subset (data_buc, Aglo == 6)
+
+####  deficit cuantitativo
+
+buc_def <- subset(data_buc,select = c('Municipio','Defcuant2005'))
+
+buc_def <- ggplot(buc_def, aes(Municipio, Defcuant2005)) +        
+  geom_bar(stat = "identity")
+
+buc_def + xlab("Municipio") + ylab("Déf. Cuantitativo 2005") 
+
+####  valor del suelo
+
+buc_val <- subset(data_buc,select = c('Municipio','Valorsuelo'))
+
+buc_val <- ggplot(buc_val, aes(Municipio, Valorsuelo)) +        
+  geom_bar(stat = "identity")
+
+buc_val + xlab("Municipio") + ylab("Valor suelo urbano")
+
+
+####  proporcion suelo de expansion
+
+buc_prop <- subset(data_buc,select = c('Municipio','proporcionareaexpansion'))
+
+buc_prop <- ggplot(buc_prop, aes(Municipio, proporcionareaexpansion)) +        
+  geom_bar(stat = "identity")
+
+buc_prop + xlab("Municipio") + ylab("Proporción suelo habilitado")
+
+####  vis10mil
+
+buc_vis <- subset(data_buc,select = c('Municipio','VIS10MIL'))
+
+buc_vis <- ggplot(buc_vis, aes(Municipio, VIS10MIL)) +        
+  geom_bar(stat = "identity")
+
+buc_vis + xlab("Municipio") + ylab("N° VIS cada 10mil hab") 
+
+
+
+####################################################
+####################################################
+# PARA FIGURA 4,  MAPAS POR AGLOMERACIONES
+####################################################
+
+setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
+
+
+#base municipios colombia
+
+mun <-read_sf("stores/Municipios/Municipios.shp")
+mun <- st_transform(mun, 4326)
+
+leaflet() %>% addTiles() %>% addPolygons(data=mun) #se demora un poco en cargar porque son todos los municipios del pais
+
+
+#base proyectos VIS
+
+coord_vis<-haven::read_dta("stores/coord_proyectos_vis.dta")
+coord_vis<-st_as_sf(coord_vis, coords=c("Longitud", "Latitud"))
+coord_vis <- st_set_crs(coord_vis, "+proj=longlat +datum=WGS84")
+coord_vis <- st_transform(coord_vis, 4326)
+
+leaflet() %>% addTiles() %>% addPolygons(data=mun, fill=NA)  %>% addCircleMarkers(data=coord_vis, col="red")
+
+db <- read_dta('C:/Users/Camila Cely/Documents/GitHub/tesis_meca/DATOS/MCO/MCOED.dta')
+
+db_mun <- select(filter(db),c(Codigodane, VIS10MIL, proporcionareaexpansion )) 
+
+db_mun <- db_mun %>% mutate (COD_MUNIC = Codigodane )
+
+mun <- mun %>% mutate (COD_MUNIC= as.numeric (mun$COD_MUNIC))
+db_mun <- db_mun %>% mutate (COD_MUNIC= as.numeric (db_mun$COD_MUNIC))
+
+db_mun <- left_join(db_mun, mun)
+
+summary(db_mun)
+summary(mun)
+
+class(db_mun)
+class(mun)
+
+db_mun <- st_as_sf (db_mun)
+
+
+#######
+# vamos a intentar ver la relacion entre suelo habilitado y vis por cada 10mil habitantes en mapas paralelos
+
+
+#### En este mapa 1 veremos los municipios con mayor proporcion de suelo habilitado
+
+summary (db_mun$proporcionareaexpansion)
+
+upper_bound_cp1<-0.2  
+upper_bound_cp2<-0.4
+upper_bound_cp3<-0.6
+upper_bound_cp4<-0.8
+upper_bound_cp5<-1
+
+
+upper_bound_cp1 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp1, na.rm=T)  
+upper_bound_cp1 
+
+upper_bound_cp2 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp2, na.rm=T)  
+upper_bound_cp2 
+
+upper_bound_cp3 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp3, na.rm=T)  
+upper_bound_cp3
+
+upper_bound_cp4 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp4, na.rm=T)  
+upper_bound_cp4
+
+upper_bound_cp5 <- quantile(db_mun$proporcionareaexpansion, upper_bound_cp5, na.rm=T)  
+upper_bound_cp5
+
+
+db_mun <- db_mun %>% 
+  mutate(cp1 = if_else( proporcionareaexpansion <= upper_bound_cp1, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(cp2 = if_else( proporcionareaexpansion <= upper_bound_cp2, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(cp2 = if_else( proporcionareaexpansion > upper_bound_cp1, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(cp3 = if_else( proporcionareaexpansion <= upper_bound_cp3, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(cp3 = if_else( proporcionareaexpansion > upper_bound_cp2, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(cp4 = if_else( proporcionareaexpansion <= upper_bound_cp4, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(cp4 = if_else( proporcionareaexpansion > upper_bound_cp3, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(cp5= if_else( proporcionareaexpansion <= upper_bound_cp5, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(cp5 = if_else( proporcionareaexpansion > upper_bound_cp4, 1, 0))
+
+
+colorcp <- rep(NA, nrow(db_mun))
+
+colorcp[db_mun$cp1 == 1] <- "#CAF0F8"   
+colorcp[db_mun$cp2 == 1] <- "#90E0EF"
+colorcp[db_mun$cp3 == 1] <- "#00B4D8"
+colorcp[db_mun$cp4 == 1] <- "#0077B6"
+colorcp[db_mun$cp5 == 1] <- "#03045E"  #el mas oscuro es el que mas crecio en area de expansion
+
+#MAPA 1
+leaflet() %>% addTiles() %>% addCircleMarkers(
+  data=coord_vis, color= "black", fillOpacity=1 , opacity=1, radius=1) %>% addPolygons(
+    data= db_mun, color= colorcp, fillOpacity=0.5, opacity = 0.5)
+
+
+#### Ahora en el mapa 2 veremos los municipios con mayor proporcion de VIS por cada 10mil habitantes
+
+summary (db_mun$VIS10MIL)
+
+upper_bound_c1<-0.2  
+upper_bound_c2<-0.4
+upper_bound_c3<-0.6
+upper_bound_c4<-0.8
+upper_bound_c5<-1
+
+
+upper_bound_c1 <- quantile(db_mun$VIS10MIL, upper_bound_c1, na.rm=T)  
+upper_bound_c1 
+
+upper_bound_c2 <- quantile(db_mun$VIS10MIL, upper_bound_c2, na.rm=T)  
+upper_bound_c2 
+
+upper_bound_c3 <- quantile(db_mun$VIS10MIL, upper_bound_c3, na.rm=T)  
+upper_bound_c3
+
+upper_bound_c4 <- quantile(db_mun$VIS10MIL, upper_bound_c4, na.rm=T)  
+upper_bound_c4
+
+upper_bound_c5 <- quantile(db_mun$VIS10MIL, upper_bound_c5, na.rm=T)  
+upper_bound_c5
+
+
+db_mun <- db_mun %>% 
+  mutate(c1 = if_else( VIS10MIL <= upper_bound_c1, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(c2 = if_else( VIS10MIL <= upper_bound_c2, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(c2 = if_else( VIS10MIL > upper_bound_c1, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(c3 = if_else( VIS10MIL <= upper_bound_c3, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(c3 = if_else( VIS10MIL > upper_bound_c2, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(c4 = if_else( VIS10MIL <= upper_bound_c4, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(c4 = if_else( VIS10MIL > upper_bound_c3, 1, 0))
+
+db_mun <- db_mun %>% 
+  mutate(c5= if_else( VIS10MIL <= upper_bound_c5, 1, 0))
+db_mun <- db_mun %>% 
+  mutate(c5 = if_else( VIS10MIL > upper_bound_c4, 1, 0))
+
+
+colorc <- rep(NA, nrow(db_mun))
+
+colorc[db_mun$c1 == 1] <- "#FF9B54"   
+colorc[db_mun$c2 == 1] <- "#FF7F51"
+colorc[db_mun$c3 == 1] <- "#CE4257"
+colorc[db_mun$c4 == 1] <- "#720026"
+colorc[db_mun$c5 == 1] <- "#4F000B"  #el mas oscuro es el que mas tiene VIS por cada 10 mil hab
+
+#MAPA 2
+leaflet() %>% addTiles() %>% addCircleMarkers(
+  data=coord_vis, color= "black", fillOpacity=1 , opacity=1, radius=1) %>% addPolygons(
+    data= db_mun, color= colorc, fillOpacity=0.5, opacity = 0.5)
+

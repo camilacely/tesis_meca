@@ -40,7 +40,7 @@ p_load(tidyverse,    #Para limpiar los datos
 ## Directorio
 
 #setwd("C:/Users/SARA/Documents/ESPECIALIZACIÓN/BIG DATA/GITHUB/tesis_meca/DATOS")
-#setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
+setwd("C:/Users/Camila Cely/Documents/GitHub/tesis_meca")
 
 
 ###############################
@@ -899,12 +899,14 @@ coord_vis <- st_transform(coord_vis, 4326)
 
 leaflet() %>% addTiles() %>% addPolygons(data=mun, fill=NA)  %>% addCircleMarkers(data=coord_vis, col="red")
 
+db <- read_dta('C:/Users/Camila Cely/Documents/GitHub/tesis_meca/DATOS/MCO/MCOED.dta')
 
-db_mun <- select(filter(db),c(codmpio, VIS10MIL, proporcionareaexpansion )) 
+db_mun <- select(filter(db),c(Codigodane, VIS10MIL, proporcionareaexpansion )) 
 
-db_mun <- db_mun %>% mutate (COD_MUNIC = codmpio )
+db_mun <- db_mun %>% mutate (COD_MUNIC = Codigodane )
 
 mun <- mun %>% mutate (COD_MUNIC= as.numeric (mun$COD_MUNIC))
+db_mun <- db_mun %>% mutate (COD_MUNIC= as.numeric (db_mun$COD_MUNIC))
 
 db_mun <- left_join(db_mun, mun)
 
@@ -1053,6 +1055,12 @@ leaflet() %>% addTiles() %>% addCircleMarkers(
 
 ########################################################################################################
 
+### para documento final 
 
+box_plot <- ggplot(data=db , mapping = aes(Aglomeración , proporcionareaexpansion)) + 
+  geom_boxplot() 
+box_plot
 
-
+bar_plot <- ggplot(data=db , mapping = aes(Aglomeración , proporcionareaexpansion)) + 
+  geom_bar(stat = "identity")
+bar_plot
