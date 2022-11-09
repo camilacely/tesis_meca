@@ -1,11 +1,21 @@
 # estadisticas descriptivas capitulo datos - tesis meca
 # maria camila cely moreno - sara ospina giraldo
 
-library(haven)
-library(ggplot2)
-library(ggpubr)
+## clean environment
+rm(list=ls())
 
-data <- read_dta('C:/Users/Camila Cely/Documents/GitHub/tesis_meca/DATOS/MCO/MCOED.dta')
+
+require(pacman)
+p_load(tidyverse, 
+       ggplot2,
+       stargazer,
+       leaflet,
+       haven,
+       ggpubr,
+       sf)
+
+
+data <- read_dta('C:/Users/Camila Cely/Documents/GitHub/tesis_meca/stores/MCO - Stata/MCOED.dta')
 
 
 ####################################################
@@ -311,7 +321,9 @@ coord_vis <- st_transform(coord_vis, 4326)
 
 leaflet() %>% addTiles() %>% addPolygons(data=mun, fill=NA)  %>% addCircleMarkers(data=coord_vis, col="red")
 
-db <- read_dta('C:/Users/Camila Cely/Documents/GitHub/tesis_meca/DATOS/MCO/MCOED.dta')
+
+db <- read_dta('C:/Users/Camila Cely/Documents/GitHub/tesis_meca/stores/MCO - Stata/MCOED.dta')
+
 
 db_mun <- select(filter(db),c(Codigodane, VIS10MIL, proporcionareaexpansion )) 
 
@@ -463,4 +475,62 @@ colorc[db_mun$c5 == 1] <- "#4F000B"  #el mas oscuro es el que mas tiene VIS por 
 leaflet() %>% addTiles() %>% addCircleMarkers(
   data=coord_vis, color= "black", fillOpacity=1 , opacity=1, radius=1) %>% addPolygons(
     data= db_mun, color= colorc, fillOpacity=0.5, opacity = 0.5)
+
+
+#########
+# juntar los dos mapas
+
+names(providers) #aqui estan los tipos de base que se le pueden poner al mapa
+
+#primero, crear tamaño de circulos en vez de colores
+
+#crear centroide de los municipios
+db_mun$centroid <- st_centroid(db_mun$geometry)
+
+#aqui vemos solo los centroides
+leaflet() %>% addTiles() %>% addCircleMarkers(
+  data= db_mun$centroid, color= "black", fillOpacity=1 , opacity=1, radius=1)
+
+# queremos ver dos cosas, la proporcion de suelo y la proporcion de vis
+
+# suelo: cp1 (...) cp5
+# vis: c1 (..) c5
+
+###
+# tamaños para vis #vis, rojo
+radiusc <- rep(NA, nrow(db_mun))
+
+radiusc[db_mun$c1 == 1] <- 2 
+radiusc[db_mun$c2 == 1] <- 4
+radiusc[db_mun$c3 == 1] <- 6
+radiusc[db_mun$c4 == 1] <- 8
+radiusc[db_mun$c5 == 1] <- 10
+
+leaflet() %>% addProviderTiles(providers$Wikimedia) %>% addCircleMarkers(
+  data= db_mun$centroid, color= colorc, fillOpacity=0 , opacity=0.8, radius=radiusc)
+
+
+###
+# tamaños para suelo #suelo, azul
+radiuscp <- rep(NA, nrow(db_mun))
+
+radiuscp[db_mun$cp1 == 1] <- 2 
+radiuscp[db_mun$cp2 == 1] <- 4
+radiuscp[db_mun$cp3 == 1] <- 6
+radiuscp[db_mun$cp4 == 1] <- 8
+radiuscp[db_mun$cp5 == 1] <- 10
+
+leaflet() %>% addProviderTiles(providers$Wikimedia) %>% addCircleMarkers(
+  data= db_mun$centroid, color= colorcp, fillOpacity=0 , opacity=0.8, radius=radiuscp)
+
+#combinado
+
+leaflet() %>% addProviderTiles(providers$CartoDB.VoyagerNoLabel) %>% addCircleMarkers(
+  data= db_mun$centroid, color= "#0077B6", fillOpacity=0.2 , opacity=0.8, radius=radiuscp, stroke = TRUE, weight=2) %>% addCircleMarkers(
+    data= db_mun$centroid, color= "#CE4257", fillOpacity=0 , opacity=0.8, radius=radiusc, stroke= TRUE, weight =2) 
+
+#sin fondo
+leaflet() %>%  addCircleMarkers(
+  data= db_mun$centroid, color= "#0077B6", fillOpacity=0.2 , opacity=0.8, radius=radiuscp, stroke = TRUE, weight=2) %>% addCircleMarkers(
+    data= db_mun$centroid, color= "#CE4257", fillOpacity=0 , opacity=0.8, radius=radiusc, stroke= TRUE, weight =2) 
 
