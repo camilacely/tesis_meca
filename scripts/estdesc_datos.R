@@ -523,8 +523,7 @@ radiuscp[db_mun$cp5 == 1] <- 10
 leaflet() %>% addProviderTiles(providers$Wikimedia) %>% addCircleMarkers(
   data= db_mun$centroid, color= colorcp, fillOpacity=0 , opacity=0.8, radius=radiuscp)
 
-#combinado
-
+#combinado, sin labels
 leaflet() %>% addProviderTiles(providers$CartoDB.VoyagerNoLabel) %>% addCircleMarkers(
   data= db_mun$centroid, color= "#0077B6", fillOpacity=0.2 , opacity=0.8, radius=radiuscp, stroke = TRUE, weight=2) %>% addCircleMarkers(
     data= db_mun$centroid, color= "#CE4257", fillOpacity=0 , opacity=0.8, radius=radiusc, stroke= TRUE, weight =2) 
