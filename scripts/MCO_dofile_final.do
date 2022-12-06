@@ -49,6 +49,7 @@ encode Ejesregionales, gen(eje)
 
 gen POB10mil= pobl_urb/10000
 gen VIS10MIL= VIS/POB10mil
+gen LogVIS10MIL= ln(VIS10MIL)
 
 *save MCOED.dta
 
@@ -83,27 +84,39 @@ estimates store modelo_9
 reg VIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con i.Aglo
 estimates store modelo_10
 
+*Correr regresión con logaritmo 
+reg LogVIS10MIL proporcionareaexpansion i.Aglo
+estimates store modelo_11
+reg LogVIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 i.Aglo
+estimates store modelo_12
+reg LogVIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e i.Aglo
+estimates store modelo_13
+reg LogVIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL i.Aglo
+estimates store modelo_14
+reg LogVIS10MIL proporcionareaexpansion IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con i.Aglo
+estimates store modelo_15
+
+
 **Doble selection lasso
 dsregress VIS10MIL proporcionareaexpansion, controls(IPM_urb Defcuant2005 HHI2013 Valorsuelo_e ULT_POT MODEXCEPCIONAL Alineadoalc_con i.Aglo) 
-estimates store modelo_11
+estimates store modelo_16
 ereturn list
 
 reg VIS10MIL proporcionareaexpansion Defcuant2005
-estimates store modelo_12
+estimates store modelo_17
 
 
 outreg2 [modelo_1 modelo_2 modelo_3 modelo_4 modelo_5] using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO.doc", replace
 erase "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO.txt"
 
-
 outreg2 [modelo_6 modelo_7 modelo_8 modelo_9 modelo_10] using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO2.doc", replace
 erase "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO2.txt"
 
-outreg2 [modelo_11 modelo_12 modelo_10] using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\Doblelasso.doc", replace
+outreg2 [modelo_11 modelo_12 modelo_13 modelo_14 modelo_15] using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO3.doc", replace
+erase "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\EstimacionesMCO3.txt"
+
+outreg2 [modelo_16 modelo_17 modelo_10] using "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\Doblelasso.doc", replace
 erase "C:\Users\SARA\Documents\ESPECIALIZACIÓN\BIG DATA\GITHUB\tesis_meca\views\Doblelasso.txt"
-
-
-
 
 
 
